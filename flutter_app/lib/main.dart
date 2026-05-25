@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/views/data/notifiers.dart';
-import 'package:flutter_app/views/widget_tree.dart';
+import 'package:flutter_app/views/pages/welcome_page.dart';
 // import 'package:flutter_app/screens/color_scheme.dart';
 
 void main() {
@@ -29,7 +29,7 @@ class _MyAppState extends State<MyApp> {
             ),
             useMaterial3: true,
           ),
-          home: const WidgetTree(),
+          home: WelcomePage(),
         );
       },
     );

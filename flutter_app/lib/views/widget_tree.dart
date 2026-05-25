@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/routes/app_page_route.dart';
 import 'package:flutter_app/views/data/notifiers.dart';
 import 'package:flutter_app/views/pages/home_page.dart';
 import 'package:flutter_app/views/pages/profile_page.dart';
+import 'package:flutter_app/views/pages/settings_page.dart';
 import 'package:flutter_app/views/widgets/navbar_widget.dart';
 
 List<Widget> pages = const [HomePage(), ProfilePage()];
@@ -16,18 +18,25 @@ class WidgetTree extends StatelessWidget {
         title: const Text("Flutter"),
         centerTitle: true,
         actions: [
-          ValueListenableBuilder(
-            valueListenable: isDarkModeNotifier,
-            builder: (context, isDarkMode, child) {
-              return IconButton(
-                onPressed: () {
-                  isDarkModeNotifier.value = !isDarkMode;
-                },
-                icon: isDarkMode
-                    ? Icon(Icons.light_mode)
-                    : Icon(Icons.dark_mode),
+          IconButton(
+            onPressed: () {
+              isDarkModeNotifier.value = !isDarkModeNotifier.value;
+            },
+            icon: ValueListenableBuilder(
+              valueListenable: isDarkModeNotifier,
+              builder: (context, isDarkMode, child) {
+                return Icon(isDarkMode ? Icons.light_mode : Icons.dark_mode);
+              },
+            ),
+          ),
+          IconButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                slideFadeRoute(SettingsPage(title: "Settings")),
               );
             },
+            icon: Icon(Icons.settings),
           ),
         ],
       ),

@@ -125,6 +125,19 @@
 - Learned that `NavigationBar` is different from `TabBar`.
 - Learned that `NavigationBar` requires at least two `NavigationDestination`s.
 
+## Navigation And Animations
+
+- Added a welcome/login screen that navigates into the main `WidgetTree`.
+- Added a reusable `slideFadeRoute(...)` helper using `PageRouteBuilder` so route animation code stays out of button handlers.
+- Replaced repeated `CupertinoPageRoute` calls with the reusable route helper.
+- Learned that `Hero` animations need matching `Hero` tags on two different routes.
+- Learned that route animation and `Hero` animation are connected: the `Hero` flight happens during a `Navigator` route transition.
+- Learned that replacing a widget in `body` with `pages.elementAt(index)` is not the same as pushing a route, so it does not create a route transition by itself.
+- Learned that `CupertinoPageRoute` can make transitions look more obvious, but it also gives the route an iOS-style navigation feel.
+- Learned that `PageRouteBuilder` is more verbose inline, but a helper function makes custom route transitions reusable.
+- Learned that first animations can look broken in Flutter debug mode on the Android emulator because debug builds are slower and may skip early frames.
+- Learned to use `flutter run --profile` when judging animation/performance behavior.
+
 ## Dart Basics
 
 - Learned that Dart `Map<String, dynamic>` is similar to a JavaScript object used as a dictionary.
@@ -146,6 +159,8 @@
 - Added a `TextField` with a `TextEditingController`.
 - Learned that `TextEditingController.text` stores the current text field value.
 - Learned that `onEditingComplete` can call `setState()` to rebuild text shown from the controller.
+- Added a `DropdownButton` with `DropdownMenuItem`s and nullable `String?` state.
+- Learned that dropdown selected values must match one of the item values.
 - Added `Checkbox` and `CheckboxListTile`.
 - Learned that normal controls like `Checkbox` and `Switch` are only the control itself.
 - Learned that tile controls like `CheckboxListTile` and `SwitchListTile` are full row widgets with title/subtitle/tap area.
@@ -153,6 +168,16 @@
 - Learned that `value ?? false` removes the `null` state, so it should not be used when intentionally practicing tristate behavior.
 - Added `Switch` and `SwitchListTile`.
 - Added a `Slider` with local `double` state.
+- Wrapped the profile page content in `SingleChildScrollView` so the controls can scroll when they exceed the screen height.
+- Added practice examples for `ElevatedButton`, `FilledButton`, `TextButton`, `OutlinedButton`, `CloseButton`, and `BackButton`.
+- Added an `InkWell` tap area and learned that it provides Material tap/splash behavior.
+
+## Testing
+
+- Replaced the default counter widget test with tests that match the current app.
+- Added a widget test that verifies the app title, home page, and bottom navigation to the profile page.
+- Added a widget test that taps the dark mode icon and verifies it changes to the light mode icon.
+- Learned that generated starter tests can fail after the UI changes and should be updated to test the actual app behavior.
 
 ## Assets
 
