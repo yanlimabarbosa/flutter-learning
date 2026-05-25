@@ -41,6 +41,9 @@
 - Learned how `createState()` connects a `StatefulWidget` to its `State` class.
 - Learned that `setState()` changes local state and tells Flutter to rebuild that widget subtree.
 - Learned that multiple state values can be changed inside one `setState()` call.
+- Learned that mutable UI state must live as a field on the `State` class, not as a local variable inside `build()`.
+- Learned that local variables inside `build()` are recreated on every rebuild.
+- Learned that `NavigationBar.selectedIndex` must read from persistent state if tapping a destination should update the selected page/item.
 - Learned that `Scaffold` is a page shell with slots like:
   - `appBar`
   - `body`
@@ -64,6 +67,10 @@
 - Learned that asset changes may need hot restart/full restart, not just hot reload.
 - Learned that hot reload can reject invalid changes and keep the last valid running app.
 - Learned that hot restart/full restart is safer after structural changes like renaming fields or constructors.
+- Learned that hot reload patches method bodies, but does not reliably reshape existing classes/objects.
+- Learned that changing fields, removing fields, changing constructors, or changing root app setup may require hot restart.
+- Learned that values declared inside `build()` are generally more hot-reload-friendly than widget instance fields.
+- Learned that a rejected hot reload can show messages like `Const class cannot remove fields`.
 
 ## Material, Cupertino, And Theming
 
@@ -170,4 +177,3 @@
 - Secure auth/token storage.
 - Orientation handling.
 - Open app settings.
-
