@@ -58,6 +58,12 @@
 - Learned that `Wrap` lays children onto multiple lines and uses `WrapAlignment`.
 - Learned that `Stack` overlays children on top of each other.
 - Learned that `SizedBox` can define a fixed area so centered overlay text aligns with an image.
+- Learned that `Column` defaults to `crossAxisAlignment: CrossAxisAlignment.center`.
+- Learned that `Column(crossAxisAlignment: CrossAxisAlignment.start)` is the Flutter equivalent of left-aligning children on the horizontal axis.
+- Learned that a `Column`'s main axis is vertical and its cross axis is horizontal.
+- Learned that a `Row`'s main axis is horizontal and its cross axis is vertical.
+- Learned that `const` widgets can be reused because their values are compile-time constants.
+- Learned to use `const` for static widgets like `Text`, `Icon`, pages, and custom widgets when their constructor values do not depend on runtime state.
 
 ## Common Layout Pitfalls
 
@@ -72,6 +78,21 @@
 - Learned that values declared inside `build()` are generally more hot-reload-friendly than widget instance fields.
 - Learned that a rejected hot reload can show messages like `Const class cannot remove fields`.
 
+## State Management
+
+- Learned that `setState()` is best for local UI state inside one widget/screen.
+- Learned that `ValueNotifier` is useful for tiny shared reactive values.
+- Learned that `ValueListenableBuilder` subscribes the UI to a `ValueNotifier` and rebuilds when the value changes.
+- Learned that importing a notifier and reading `.value` only reads the current value; it does not subscribe the widget to rebuilds.
+- Learned the rule: direct notifier access is fine for changing a value, but UI that visually depends on that value needs a listener/builder.
+- Added `selectedPageNotifier` to control the selected bottom navigation page.
+- Added `isDarkModeNotifier` to control dark/light mode.
+- Learned that the root `MaterialApp` should listen to `isDarkModeNotifier` because the app theme depends on it.
+- Learned that only the dark/light icon button needs its own small `ValueListenableBuilder` if the icon changes between moon and sun.
+- Learned that `ValueNotifier + ValueListenableBuilder` is good for learning and small UI state, while larger business/app state in the work project uses Cubit/Bloc heavily.
+- Learned that the work project also uses `setState`, `ValueNotifier`, `ValueListenableBuilder`, `ListenableBuilder`, and `.addListener(...)`.
+- Learned that the work project's bottom navigation uses `TabController`, `ListenableBuilder`, and a global `ValueNotifier<int>` for the current bottom navigation index.
+
 ## Material, Cupertino, And Theming
 
 - Learned that Material Design is Google's design system.
@@ -83,6 +104,8 @@
 - Learned that `seedColor` does not mean every background becomes that exact color.
 - Learned that `Scaffold` uses theme background/surface colors unless `backgroundColor` is set directly.
 - Learned that `useMaterial3: true` enables Material Design 3 defaults.
+- Learned that `ThemeData(colorScheme: ColorScheme.fromSeed(...))` can generate light or dark color schemes by changing `brightness`.
+- Learned that dark/light mode can be implemented by rebuilding `MaterialApp` with a different `ThemeData`.
 - Created a `ColorSchemePage` to print and display generated `ColorScheme` values.
 - Moved `ColorSchemePage` into its own file under `lib/screens/color_scheme.dart`.
 - Learned Dart file naming convention: `snake_case.dart`.
@@ -110,6 +133,26 @@
 - Learned arrow callbacks like `() => doSomething()` are similar to JavaScript arrow functions.
 - Learned block callbacks like `() { ... }` are used for multiple statements.
 - Learned that passing `onTap: functionName` gives Flutter a function to run later, while `onTap: functionName()` runs it immediately.
+- Learned that Dart string interpolation uses `$variable` and `${expression}`.
+- Learned that `bool` is non-nullable, while `bool?` can be `true`, `false`, or `null`.
+- Learned that `Checkbox.onChanged` receives `bool?` because Flutter checkboxes can support a third `null` state.
+- Learned that `=>` implicitly returns one expression.
+- Learned that `() => { doSomething() }` is not a block body in Dart; `{}` after `=>` creates a Set/Map literal.
+- Learned to prefer `() { doSomething(); }` for side-effect callbacks.
+- Learned that one-expression callbacks can use `() => doSomething()`.
+
+## Forms And Inputs
+
+- Added a `TextField` with a `TextEditingController`.
+- Learned that `TextEditingController.text` stores the current text field value.
+- Learned that `onEditingComplete` can call `setState()` to rebuild text shown from the controller.
+- Added `Checkbox` and `CheckboxListTile`.
+- Learned that normal controls like `Checkbox` and `Switch` are only the control itself.
+- Learned that tile controls like `CheckboxListTile` and `SwitchListTile` are full row widgets with title/subtitle/tap area.
+- Learned that `tristate: true` allows a checkbox value to cycle through `false`, `true`, and `null`.
+- Learned that `value ?? false` removes the `null` state, so it should not be used when intentionally practicing tristate behavior.
+- Added `Switch` and `SwitchListTile`.
+- Added a `Slider` with local `double` state.
 
 ## Assets
 
@@ -122,6 +165,16 @@
 - Learned that Dart formatter keeps short widget constructor calls on one line.
 - Learned that trailing commas help the formatter preserve multiline widget trees.
 - Learned that the course formatting may differ because of narrower editor width or different line length settings.
+
+## Emulator And Platform Notes
+
+- Learned that Android emulator keyboard behavior can depend on focus, emulator extended controls, and AVD config.
+- Learned that `hw.keyboard=yes` in `/home/yan/.android/avd/pixel.avd/config.ini` enables hardware keyboard support for the Pixel AVD.
+- Learned that a nicer Android device frame depends on the emulator skin/device profile, not only `showDeviceFrame=yes`.
+- Learned that creating a new Pixel emulator profile in Android Studio Device Manager may be needed for a nicer device frame.
+- Learned that iOS Simulator and normal iOS local builds require macOS and Xcode.
+- Learned that Linux is fine for Flutter code, Android emulator, tests, and Android builds, but iOS build/sign/simulator workflow needs access to macOS.
+- Learned that Docker-OSX/Hackintosh exist as unofficial workarounds, but they are not the supported/professional path for company iOS development.
 
 ## Work Project Context
 
