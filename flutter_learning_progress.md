@@ -100,6 +100,8 @@
 - Learned that `bool` is not enough for theme preference when the app needs a third "follow phone preference" option.
 - Added `loadThemeMode()` to load a saved theme preference before `runApp(...)`.
 - Added `setThemeMode(...)` to update the theme and persist the user choice.
+- Noted that keeping `themeModeNotifier`, `loadThemeMode()`, and `setThemeMode(...)` together in `notifiers.dart` is acceptable for the learning app because the feature is small.
+- Noted that this should be improved later into a clearer structure such as `ThemeController`, `theme_notifier.dart`, `theme_service.dart`, or eventually `ThemeCubit`/repository style to better match production app architecture.
 - Learned that `ValueNotifier + ValueListenableBuilder` is good for learning and small UI state, while larger business/app state in the work project uses Cubit/Bloc heavily.
 - Learned that the work project also uses `setState`, `ValueNotifier`, `ValueListenableBuilder`, `ListenableBuilder`, and `.addListener(...)`.
 - Learned that the work project's bottom navigation uses `TabController`, `ListenableBuilder`, and a global `ValueNotifier<int>` for the current bottom navigation index.
