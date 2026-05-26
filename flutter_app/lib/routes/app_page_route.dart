@@ -1,21 +1,21 @@
-import 'package:flutter/material.dart';
+// import 'package:flutter/material.dart';
 
-Route<T> slideFadeRoute<T>(Widget page) {
-  return PageRouteBuilder<T>(
-    pageBuilder: (context, animation, secondaryAnimation) => page,
-    transitionsBuilder: (context, animation, secondaryAnimation, child) {
-      final curved = CurvedAnimation(
-        parent: animation,
-        curve: Curves.easeOutCubic,
-      );
+// Route<T> slideFadeRoute<T>(Widget page) {
+//   return PageRouteBuilder<T>(
+//     pageBuilder: (context, animation, secondaryAnimation) => page,
+//     transitionsBuilder: (context, animation, secondaryAnimation, child) {
+//       final curved = CurvedAnimation(
+//         parent: animation,
+//         curve: Curves.easeOutCubic,
+//       );
 
-      return SlideTransition(
-        position: Tween<Offset>(
-          begin: const Offset(1, 0),
-          end: Offset.zero,
-        ).animate(curved),
-        child: FadeTransition(opacity: curved, child: child),
-      );
-    },
-  );
-}
+//       return SlideTransition(
+//         position: Tween<Offset>(
+//           begin: const Offset(1, 0),
+//           end: Offset.zero,
+//         ).animate(curved),
+//         child: FadeTransition(opacity: curved, child: child),
+//       );
+//     },
+//   );
+// }
