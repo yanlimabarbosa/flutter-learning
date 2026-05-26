@@ -1,39 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/views/data/constants.dart';
+import 'package:flutter_app/views/pages/course_page.dart';
+import 'package:flutter_app/views/widgets/container_widget.dart';
 import 'package:flutter_app/views/widgets/hero_widget.dart';
-import 'package:lottie/lottie.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Padding(
-        padding: EdgeInsets.all(20.0),
+    List<String> list = [
+      KValue.keyConcepts,
+      KValue.cleanUi,
+      KValue.fixBugs,
+      KValue.basicLayout,
+    ];
+
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 20.0),
+      child: SingleChildScrollView(
         child: Column(
           children: [
-            HeroWidget(title: "Home"),
-            Lottie.asset('assets/lotties/home.json'),
-            Container(
-              padding: EdgeInsets.symmetric(vertical: 10.0),
-              width: double.infinity,
-              child: Card(
-                child: Padding(
-                  padding: EdgeInsets.all(20.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text("Basic Layout", style: KTextStyle.titleTealText),
-                      Text(
-                        "The Description of this",
-                        style: KTextStyle.descriptionText,
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
+            HeroWidget(title: "Home", nextPage: CoursePage()),
+            ...List.generate(list.length, (index) {
+              return ContainerWidget(
+                title: list.elementAt(index),
+                description: "The description of this",
+              );
+            }),
           ],
         ),
       ),
