@@ -3,7 +3,10 @@ import 'package:flutter_app/views/data/notifiers.dart';
 import 'package:flutter_app/views/pages/welcome_page.dart';
 // import 'package:flutter_app/screens/color_scheme.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await loadThemeMode();
+
   runApp(const MyApp());
 }
 
@@ -18,18 +21,26 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
-      valueListenable: isDarkModeNotifier,
-      builder: (context, isDarkMode, child) {
+      valueListenable: themeModeNotifier,
+      builder: (context, themeMode, child) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(
               seedColor: Colors.teal,
-              brightness: isDarkMode ? Brightness.dark : Brightness.light,
+              brightness: Brightness.light,
             ),
             useMaterial3: true,
           ),
-          home: WelcomePage(),
+          darkTheme: ThemeData(
+            colorScheme: ColorScheme.fromSeed(
+              seedColor: Colors.teal,
+              brightness: Brightness.dark,
+            ),
+            useMaterial3: true,
+          ),
+          themeMode: themeMode,
+          home: const WelcomePage(),
         );
       },
     );

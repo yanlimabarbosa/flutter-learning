@@ -1,5 +1,5 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/routes/app_page_route.dart';
 import 'package:flutter_app/views/data/notifiers.dart';
 import 'package:flutter_app/views/pages/home_page.dart';
 import 'package:flutter_app/views/pages/profile_page.dart';
@@ -16,27 +16,33 @@ class WidgetTree extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Flutter"),
-        centerTitle: true,
+        centerTitle: false,
         actions: [
-          IconButton(
-            onPressed: () {
-              isDarkModeNotifier.value = !isDarkModeNotifier.value;
+          PopupMenuButton<ThemeMode>(
+            icon: const Icon(Icons.brightness_6),
+            onSelected: (themeMode) {
+              setThemeMode(themeMode);
             },
-            icon: ValueListenableBuilder(
-              valueListenable: isDarkModeNotifier,
-              builder: (context, isDarkMode, child) {
-                return Icon(isDarkMode ? Icons.light_mode : Icons.dark_mode);
-              },
-            ),
+            itemBuilder: (context) {
+              return const [
+                PopupMenuItem(value: ThemeMode.system, child: Text("System")),
+                PopupMenuItem(value: ThemeMode.light, child: Text("Light")),
+                PopupMenuItem(value: ThemeMode.dark, child: Text("Dark")),
+              ];
+            },
           ),
           IconButton(
             onPressed: () {
               Navigator.push(
                 context,
-                slideFadeRoute(SettingsPage(title: "Settings")),
+                CupertinoPageRoute(
+                  builder: (context) {
+                    return const SettingsPage(title: "Settings page");
+                  },
+                ),
               );
             },
-            icon: Icon(Icons.settings),
+            icon: const Icon(Icons.settings),
           ),
         ],
       ),
