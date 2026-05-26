@@ -18,17 +18,25 @@ class WidgetTree extends StatelessWidget {
         title: const Text("Flutter"),
         centerTitle: false,
         actions: [
-          PopupMenuButton<ThemeMode>(
-            icon: const Icon(Icons.brightness_6),
-            onSelected: (themeMode) {
-              setThemeMode(themeMode);
-            },
-            itemBuilder: (context) {
-              return const [
-                PopupMenuItem(value: ThemeMode.system, child: Text("System")),
-                PopupMenuItem(value: ThemeMode.light, child: Text("Light")),
-                PopupMenuItem(value: ThemeMode.dark, child: Text("Dark")),
-              ];
+          ValueListenableBuilder(
+            valueListenable: themeModeNotifier,
+            builder: (context, themeMode, child) {
+              return IconButton(
+                onPressed: () {
+                  final nextThemeMode = switch (themeMode) {
+                    ThemeMode.system => ThemeMode.light,
+                    ThemeMode.light => ThemeMode.dark,
+                    ThemeMode.dark => ThemeMode.system,
+                  };
+
+                  setThemeMode(nextThemeMode);
+                },
+                icon: Icon(switch (themeMode) {
+                  ThemeMode.system => Icons.brightness_auto,
+                  ThemeMode.light => Icons.light_mode,
+                  ThemeMode.dark => Icons.dark_mode,
+                }),
+              );
             },
           ),
           IconButton(

@@ -10,13 +10,18 @@ void main() {
     WidgetTester tester,
   ) async {
     SharedPreferences.setMockInitialValues({});
+    selectedPageNotifier.value = 0;
     await tester.binding.setSurfaceSize(const Size(1200, 1200));
 
     await tester.pumpWidget(const MyApp());
 
     expect(find.text('Login'), findsOneWidget);
 
-    await tester.tap(find.byType(FilledButton));
+    await tester.tap(find.widgetWithText(TextButton, 'Login'));
+    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 500));
+
+    await tester.tap(find.widgetWithText(FilledButton, 'Login'));
     await tester.pump();
     await tester.pump(const Duration(milliseconds: 500));
 
@@ -31,21 +36,28 @@ void main() {
 
   testWidgets('Theme menu changes theme mode', (WidgetTester tester) async {
     SharedPreferences.setMockInitialValues({});
+    selectedPageNotifier.value = 0;
     themeModeNotifier.value = ThemeMode.system;
 
     await tester.pumpWidget(const MyApp());
 
-    await tester.tap(find.byType(FilledButton));
+    await tester.tap(find.widgetWithText(TextButton, 'Login'));
     await tester.pump();
     await tester.pump(const Duration(milliseconds: 500));
 
-    expect(find.byIcon(Icons.brightness_6), findsOneWidget);
-
-    await tester.tap(find.byIcon(Icons.brightness_6));
+    await tester.tap(find.widgetWithText(FilledButton, 'Login'));
     await tester.pump();
     await tester.pump(const Duration(milliseconds: 500));
 
-    await tester.tap(find.byType(PopupMenuItem<ThemeMode>).last);
+    expect(find.byIcon(Icons.brightness_auto), findsOneWidget);
+
+    await tester.tap(find.byIcon(Icons.brightness_auto));
+    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 500));
+
+    expect(themeModeNotifier.value, ThemeMode.light);
+
+    await tester.tap(find.byIcon(Icons.light_mode));
     await tester.pump();
     await tester.pump(const Duration(milliseconds: 500));
 
