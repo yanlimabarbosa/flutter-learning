@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/views/pages/login_page.dart';
-import 'package:flutter_app/views/widget_tree.dart';
+import 'package:flutter_app/views/pages/onboarding_page.dart';
 import 'package:lottie/lottie.dart';
 
 class WelcomePage extends StatelessWidget {
@@ -55,7 +55,7 @@ class WelcomePage extends StatelessWidget {
                           context,
                           CupertinoPageRoute(
                             builder: (context) {
-                              return const LoginPage(title: "Register");
+                              return const OnboardingPage();
                             },
                           ),
                         );
@@ -71,7 +71,7 @@ class WelcomePage extends StatelessWidget {
                           context,
                           CupertinoPageRoute(
                             builder: (context) {
-                              return const LoginPage(title: "Login");
+                              return const LoginPage(title: "Register");
                             },
                           ),
                         );
