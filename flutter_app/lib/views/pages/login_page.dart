@@ -33,67 +33,76 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+    double widthScreen = MediaQuery.of(context).size.width;
+
     return Scaffold(
       appBar: AppBar(),
       body: Center(
         child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(20.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                // HeroWidget(title: widget.title),
-                Lottie.asset("assets/lotties/home.json"),
-                TextField(
-                  controller: controllerEmail,
-                  decoration: InputDecoration(
-                    hintText: "Email",
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15.0),
-                    ),
-                  ),
-                  onEditingComplete: () {
-                    setState(() {});
-                  },
-                ),
-                SizedBox(height: 10.0),
-                TextField(
-                  controller: controllerPassword,
-                  obscureText: !isPasswordVisible,
-                  decoration: InputDecoration(
-                    hintText: "Password",
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15.0),
-                    ),
-                    suffixIcon: IconButton(
-                      onPressed: () {
-                        setState(() {
-                          isPasswordVisible = !isPasswordVisible;
-                        });
-                      },
-                      icon: Icon(
-                        isPasswordVisible
-                            ? Icons.visibility_off
-                            : Icons.visibility,
+            child: LayoutBuilder(
+              builder: (context, BoxConstraints constraints) {
+                return FractionallySizedBox(
+                  widthFactor: widthScreen > 500 ? 0.5 : 1.0,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      // HeroWidget(title: widget.title),
+                      Lottie.asset("assets/lotties/home.json"),
+                      TextField(
+                        controller: controllerEmail,
+                        decoration: InputDecoration(
+                          hintText: "Email",
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15.0),
+                          ),
+                        ),
+                        onEditingComplete: () {
+                          setState(() {});
+                        },
                       ),
-                    ),
+                      SizedBox(height: 10.0),
+                      TextField(
+                        controller: controllerPassword,
+                        obscureText: !isPasswordVisible,
+                        decoration: InputDecoration(
+                          hintText: "Password",
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15.0),
+                          ),
+                          suffixIcon: IconButton(
+                            onPressed: () {
+                              setState(() {
+                                isPasswordVisible = !isPasswordVisible;
+                              });
+                            },
+                            icon: Icon(
+                              isPasswordVisible
+                                  ? Icons.visibility_off
+                                  : Icons.visibility,
+                            ),
+                          ),
+                        ),
+                        onEditingComplete: () {
+                          setState(() {});
+                        },
+                      ),
+                      SizedBox(height: 20.0),
+                      FilledButton(
+                        onPressed: () {
+                          onLoginPressed();
+                        },
+                        style: FilledButton.styleFrom(
+                          minimumSize: Size(double.infinity, 40.0),
+                        ),
+                        child: Text("Login"),
+                      ),
+                      SizedBox(height: 100.0),
+                    ],
                   ),
-                  onEditingComplete: () {
-                    setState(() {});
-                  },
-                ),
-                SizedBox(height: 20.0),
-                FilledButton(
-                  onPressed: () {
-                    onLoginPressed();
-                  },
-                  style: FilledButton.styleFrom(
-                    minimumSize: Size(double.infinity, 40.0),
-                  ),
-                  child: Text("Login"),
-                ),
-                SizedBox(height: 100.0),
-              ],
+                );
+              },
             ),
           ),
         ),
