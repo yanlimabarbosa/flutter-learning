@@ -64,6 +64,12 @@
 - Learned that a `Row`'s main axis is horizontal and its cross axis is vertical.
 - Learned that `const` widgets can be reused because their values are compile-time constants.
 - Learned to use `const` for static widgets like `Text`, `Icon`, pages, and custom widgets when their constructor values do not depend on runtime state.
+- Learned that `Expanded` is not a visual container; it is a flex layout instruction that tells a `Row`, `Column`, or `Flex` to give the child remaining space.
+- Learned that `Expanded` is like `Flexible(fit: FlexFit.tight)`: the child must fill the space assigned by the flex parent.
+- Learned that `Flexible` defaults to `FlexFit.loose`: the child may use available space but can keep its natural/preferred size.
+- Learned that `flex` means how many shares of remaining space a child gets, similar to CSS `flex-grow`.
+- Added an `ExpandedFlexiblePage` practice screen to compare `Expanded` and `Flexible` side by side.
+- Learned that `Row` and `Column` are specialized `Flex` widgets: `Row` is horizontal flex, `Column` is vertical flex.
 
 ## Common Layout Pitfalls
 
@@ -84,6 +90,10 @@
 - Fixed login/home overflow by wrapping vertical page content in `SingleChildScrollView`.
 - Learned that parent padding reduces the available width for children, so `width: double.infinity` means full width of the padded area, not necessarily full screen width.
 - Learned to move padding down to only the widgets that need it when one child, such as a Lottie animation, should be full screen width.
+- Learned that tablet emulators expose phone-first layouts quickly: widgets using `double.infinity` can become comically wide without max-width constraints.
+- Added a responsive login form width rule using screen width and `FractionallySizedBox` so the form is narrower on larger displays.
+- Learned that `AspectRatio` keeps media/hero images stable across screen sizes instead of letting the image choose awkward dimensions.
+- Learned that `BoxFit.cover` fills an image frame while preserving aspect ratio, with possible cropping.
 
 ## State Management
 
@@ -251,6 +261,20 @@
 - Learned that Docker-OSX/Hackintosh exist as unofficial workarounds, but they are not the supported/professional path for company iOS development.
 - Learned to distinguish a real Dart/Flutter exception from an Android ANR: `FATAL EXCEPTION` usually means a crash, while `ANR` / `Input dispatching timed out` means the app stopped responding for too long.
 - Learned that `Signal Catcher`, `signal 3`, and `tombstoned` logs can appear during ANR stack dumps and are not necessarily the original bug.
+- Created a Pixel Tablet AVD for responsive/tablet testing.
+- Learned that Android Studio is a GUI wrapper around SDK tools; AVDs can also be managed with `sdkmanager`, `avdmanager`, `emulator`, and `adb`.
+- Learned that Pixel Tablet emulator skins can look visually rough on Linux, and `pixel_tablet` may be the only available built-in tablet skin.
+- Learned that tablet emulator performance depends heavily on RAM/VM heap settings; 2 GB RAM is low for a Google Play tablet image, while 4 GB RAM is more reasonable on a 32 GB machine.
+- Learned that Android emulator display outlines can come from the emulator skin/overlay rather than Flutter UI.
+
+## Local Development Storage
+
+- Audited Linux disk usage with `df`, `du`, `find`, and sorted size reports.
+- Freed about 46 GB by deleting rebuildable caches and generated artifacts.
+- Learned that safe cleanup targets include Trash, npm cache, Gradle caches, browser/dev caches, Flutter `build`/`.dart_tool`, Next `.next`, and VS Code cache folders.
+- Learned that deleting Gradle caches can make the next Android build slow and may require clearing broken Kotlin DSL cache folders if Gradle references missing metadata.
+- Learned that `fvm flutter pub get` restores Flutter dependencies after `.dart_tool` cleanup.
+- Verified the Android debug APK could rebuild after cache cleanup.
 
 ## Work Project Context
 
