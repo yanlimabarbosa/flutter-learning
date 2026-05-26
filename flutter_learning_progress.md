@@ -174,6 +174,9 @@
 - Added a welcome/login screen that navigates into the main `WidgetTree`.
 - Added a reusable `slideFadeRoute(...)` helper using `PageRouteBuilder` so route animation code stays out of button handlers.
 - Replaced repeated `CupertinoPageRoute` calls with the reusable route helper.
+- Added `AnimatedCrossFade` practice to switch between two widgets with a built-in fade/size transition.
+- Learned that `AnimatedCrossFade` needs `firstChild`, `secondChild`, `crossFadeState`, and `duration`.
+- Learned that toggling a boolean with `setState()` can drive an implicit animation like `AnimatedCrossFade`.
 - Learned that `Hero` animations need matching `Hero` tags on two different routes.
 - Learned that route animation and `Hero` animation are connected: the `Hero` flight happens during a `Navigator` route transition.
 - Learned that replacing a widget in `body` with `pages.elementAt(index)` is not the same as pushing a route, so it does not create a route transition by itself.
