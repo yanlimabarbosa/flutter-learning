@@ -1,31 +1,54 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:flutter_app/main.dart';
+import 'package:flutter_app/views/data/notifiers.dart';
 
 void main() {
   testWidgets('App shows home page and navigates to profile', (
     WidgetTester tester,
   ) async {
+    SharedPreferences.setMockInitialValues({});
+    await tester.binding.setSurfaceSize(const Size(1200, 1200));
+
     await tester.pumpWidget(const MyApp());
+
+    expect(find.text('Login'), findsOneWidget);
+
+    await tester.tap(find.byType(FilledButton));
+    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 500));
 
     expect(find.text('Flutter'), findsOneWidget);
-    expect(find.text('Home Page'), findsOneWidget);
+    expect(find.text('Basic Layout'), findsOneWidget);
 
     await tester.tap(find.byIcon(Icons.person));
-    await tester.pumpAndSettle();
+    await tester.pump(const Duration(milliseconds: 500));
 
-    expect(find.text('Controller Text: , IsChecked: false'), findsOneWidget);
+    expect(find.text('Logout'), findsOneWidget);
   });
 
-  testWidgets('Theme toggle switches icon', (WidgetTester tester) async {
+  testWidgets('Theme menu changes theme mode', (WidgetTester tester) async {
+    SharedPreferences.setMockInitialValues({});
+    themeModeNotifier.value = ThemeMode.system;
+
     await tester.pumpWidget(const MyApp());
 
-    expect(find.byIcon(Icons.dark_mode), findsOneWidget);
+    await tester.tap(find.byType(FilledButton));
+    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 500));
 
-    await tester.tap(find.byIcon(Icons.dark_mode));
-    await tester.pumpAndSettle();
+    expect(find.byIcon(Icons.brightness_6), findsOneWidget);
 
-    expect(find.byIcon(Icons.light_mode), findsOneWidget);
+    await tester.tap(find.byIcon(Icons.brightness_6));
+    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 500));
+
+    await tester.tap(find.byType(PopupMenuItem<ThemeMode>).last);
+    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 500));
+
+    expect(themeModeNotifier.value, ThemeMode.dark);
   });
 }
