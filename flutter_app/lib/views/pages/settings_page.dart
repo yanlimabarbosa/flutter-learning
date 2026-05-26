@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/views/pages/expandaded_flexible_page.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key, required this.title});
@@ -165,7 +167,19 @@ class _SettingsPageState extends State<SettingsPage> {
                   // child: Image.asset("assets/images/bg.jpg"),
                 ),
               ),
-              ElevatedButton(onPressed: () {}, child: Text("Click Me")),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    CupertinoPageRoute(
+                      builder: (context) {
+                        return ExpandedFlexiblePage();
+                      },
+                    ),
+                  );
+                },
+                child: Text("Show Flexible and Expande"),
+              ),
               FilledButton(onPressed: () {}, child: Text("Click Me")),
               TextButton(onPressed: () {}, child: Text("Click Me")),
               OutlinedButton(onPressed: () {}, child: Text("Click Me")),
