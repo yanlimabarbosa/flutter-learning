@@ -98,6 +98,12 @@
 ## State Management
 
 - Learned that `setState()` is best for local UI state inside one widget/screen.
+- Learned that `FutureBuilder` owns async UI state for a `Future`: loading, error, no data, and data.
+- Learned that `FutureBuilder` does not need `setState()` just to display fetched data, because it rebuilds when the future completes.
+- Learned that `setState()` is needed when a button/action changes which future the `FutureBuilder` should listen to, such as fetching another activity.
+- Learned that a stored future like `late Future<Activity> _activityFuture;` avoids refetching on every rebuild.
+- Learned that `late final Future<Activity>` is good for one request, but it must become `late Future<Activity>` if the future will be replaced later.
+- Learned that adding a new `late` field or changing `initState()` often requires hot restart, because hot reload does not recreate the existing `State` object.
 - Learned that `ValueNotifier` is useful for tiny shared reactive values.
 - Learned that `ValueListenableBuilder` subscribes the UI to a `ValueNotifier` and rebuilds when the value changes.
 - Learned that importing a notifier and reading `.value` only reads the current value; it does not subscribe the widget to rebuilds.
@@ -181,6 +187,13 @@
 - Learned that Dart `Map<String, dynamic>` is similar to a JavaScript object used as a dictionary.
 - Learned Dart map access uses brackets: `map['key']`.
 - Learned Dart prefers classes/models for structured app data.
+- Learned that `Future<T>` means a value that will exist later, similar to a typed JavaScript `Promise<T>`.
+- Learned that `late` means a non-nullable variable will be initialized later before it is read.
+- Learned that reading a `late` field before assignment throws a `LateInitializationError`.
+- Learned that `_name` is the Dart convention for making a field/class private to its library/file.
+- Learned that `factory` constructors are constructor-like functions that can run parsing/validation logic and return an instance.
+- Learned that Dart `switch` pattern matching can validate JSON shape and types while extracting values.
+- Learned that `num` is useful for JSON numbers that might arrive as either `int` or `double`, then `.toDouble()` can normalize them.
 - Learned arrow callbacks like `() => doSomething()` are similar to JavaScript arrow functions.
 - Learned block callbacks like `() { ... }` are used for multiple statements.
 - Learned that passing `onTap: functionName` gives Flutter a function to run later, while `onTap: functionName()` runs it immediately.
@@ -213,6 +226,25 @@
 - Learned that `obscureText: true` hides password input, but Flutter does not add a visibility toggle automatically.
 - Added password visibility state with a `suffixIcon` `IconButton`.
 - Learned that `obscureText: !isPasswordVisible` connects the input behavior to the visibility toggle.
+
+## HTTP And Async Data
+
+- Added the `http` package for course-level HTTP request practice.
+- Added Android internet permission in `android/app/src/main/AndroidManifest.xml`.
+- Added macOS network client entitlement for debug/profile and release builds.
+- Learned that Android needs `<uses-permission android:name="android.permission.INTERNET" />` for internet access.
+- Learned that macOS sandboxed Flutter apps need `com.apple.security.network.client` for outbound network access.
+- Learned that iOS generally does not require a special permission for normal HTTPS requests.
+- Created an `Activity` model to represent the random activity API response.
+- Learned that parsing JSON directly in the widget works for learning, but production code should move fetch/parsing into a repository/service.
+- Learned the basic fetch flow: build `Uri`, call `http.get(...)`, check `statusCode`, decode JSON, convert to model, throw on failure.
+- Learned to prefer `import 'package:http/http.dart' as http;` so HTTP calls are explicit as `http.get(...)`.
+- Learned that typing `Future<Activity>` and `FutureBuilder<Activity>` avoids loose `dynamic` data in the UI.
+- Learned that `snapshot.data` is still nullable, so after `!snapshot.hasData` returns, `snapshot.data!` is used to access the value.
+- Learned that `snapshot.hasError` should be handled separately from loading and no-data states.
+- Learned that early returns make `FutureBuilder` state rendering clearer than assigning a `Widget widget` variable for this case.
+- Built a `Random Activity Viewer` page that fetches one activity on page creation and fetches another when pressing a button.
+- Learned that a refresh button with `FutureBuilder` usually replaces the stored future inside `setState`, while `FutureBuilder` still handles the loading/error/data snapshots.
 
 ## Testing
 
