@@ -14,6 +14,7 @@ class CoursePage extends StatefulWidget {
 
 class _CoursePageState extends State<CoursePage> {
   late Future<Activity> _activityFuture;
+  bool isFirst = true;
 
   @override
   void initState() {
@@ -44,7 +45,19 @@ class _CoursePageState extends State<CoursePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Random Activity Viewer')),
+      appBar: AppBar(
+        title: const Text('Random Activity Viewer'),
+        actions: [
+          IconButton(
+            onPressed: () {
+              setState(() {
+                isFirst = !isFirst;
+              });
+            },
+            icon: Icon(Icons.switch_access_shortcut),
+          ),
+        ],
+      ),
       body: FutureBuilder<Activity>(
         future: _activityFuture,
         builder: (context, snapshot) {
@@ -65,27 +78,36 @@ class _CoursePageState extends State<CoursePage> {
           return Padding(
             padding: const EdgeInsets.all(16.0),
             child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Activity: ${activity.activity}',
-                    style: Theme.of(context).textTheme.titleLarge,
-                  ),
-                  const SizedBox(height: 16.0),
-                  Text('Type: ${activity.type}'),
-                  Text('Participants: ${activity.participants}'),
-                  Text('Price: ${activity.price}'),
-                  Text('Availability: ${activity.availability}'),
-                  Text('Accessibility: ${activity.accessibility}'),
-                  Text('Duration: ${activity.duration}'),
-                  Text('Kid-Friendly: ${activity.kidFriendly ? 'Yes' : 'No'}'),
-                  const SizedBox(height: 32.0),
-                  FilledButton.tonal(
-                    onPressed: fetchAnotherActivity,
-                    child: const Text('Fetch Another Activity'),
-                  ),
-                ],
+              child: AnimatedCrossFade(
+                firstChild: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Activity: ${activity.activity}',
+                      style: Theme.of(context).textTheme.titleLarge,
+                    ),
+                    const SizedBox(height: 16.0),
+                    Text('Type: ${activity.type}'),
+                    Text('Participants: ${activity.participants}'),
+                    Text('Price: ${activity.price}'),
+                    Text('Availability: ${activity.availability}'),
+                    Text('Accessibility: ${activity.accessibility}'),
+                    Text('Duration: ${activity.duration}'),
+                    Text(
+                      'Kid-Friendly: ${activity.kidFriendly ? 'Yes' : 'No'}',
+                    ),
+                    const SizedBox(height: 32.0),
+                    FilledButton.tonal(
+                      onPressed: fetchAnotherActivity,
+                      child: const Text('Fetch Another Activity'),
+                    ),
+                  ],
+                ),
+                secondChild: Center(child: Image.asset("assets/images/bg.jpg")),
+                crossFadeState: isFirst
+                    ? CrossFadeState.showFirst
+                    : CrossFadeState.showSecond,
+                duration: Duration(milliseconds: 1000),
               ),
             ),
           );
