@@ -227,6 +227,12 @@
 - Learned that `BoxFit.fill` stretches to fill width and height, even if it distorts the animation.
 - Learned that if an animation's own JSON canvas clips shapes at the edge, Flutter cannot recover the missing drawing; the real fix is re-exporting the Lottie with more canvas padding.
 - Learned that wrapping a Lottie in `SizedBox(width: double.infinity)` only fills the width allowed by its parent constraints.
+- Learned that an in-app logo and a launcher icon are different assets: the in-app logo can use transparency/detail, but the launcher icon should be opaque, square, and readable at tiny sizes.
+- Added `flutter_launcher_icons.yaml` to generate native app launcher icons from `assets/images/app_icon.png`.
+- Learned that `remove_alpha_ios: true` exists because iOS app icons should not keep transparent alpha.
+- Learned that `flutter_launcher_icons` generates platform-specific files under Android `mipmap-*` folders and iOS `AppIcon.appiconset`.
+- Learned that detailed thin-line artwork can look bad when Android scales launcher icons down, so app icons need bold simple shapes.
+- Learned that `flutter analyze` does not catch every missing runtime asset; an `Image.asset("assets/images/bg.jpg")` path can fail only when that widget is actually built.
 
 ## Formatting
 
@@ -243,6 +249,8 @@
 - Learned that iOS Simulator and normal iOS local builds require macOS and Xcode.
 - Learned that Linux is fine for Flutter code, Android emulator, tests, and Android builds, but iOS build/sign/simulator workflow needs access to macOS.
 - Learned that Docker-OSX/Hackintosh exist as unofficial workarounds, but they are not the supported/professional path for company iOS development.
+- Learned to distinguish a real Dart/Flutter exception from an Android ANR: `FATAL EXCEPTION` usually means a crash, while `ANR` / `Input dispatching timed out` means the app stopped responding for too long.
+- Learned that `Signal Catcher`, `signal 3`, and `tombstoned` logs can appear during ANR stack dumps and are not necessarily the original bug.
 
 ## Work Project Context
 
