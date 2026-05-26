@@ -33,6 +33,49 @@ class _SettingsPageState extends State<SettingsPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              ElevatedButton(
+                onPressed: () {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: const Text("SnackBar"),
+                      duration: Duration(seconds: 5),
+                      behavior: SnackBarBehavior.floating,
+                    ),
+                  );
+                },
+                child: Text("Open Snackbar"),
+              ),
+              Divider(color: Colors.teal, thickness: 5.0, endIndent: 200.0),
+              SizedBox(
+                height: 50.0,
+                child: VerticalDivider(
+                  color: Colors.teal,
+                  thickness: 5.0,
+                  endIndent: 25.0,
+                ),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) {
+                      return AlertDialog(
+                        title: Text("Alert Title"),
+                        content: Text("Alert Content"),
+                        actions: [
+                          FilledButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            child: Text("Close"),
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                },
+                child: Text("Open Dialog"),
+              ),
               DropdownButton(
                 value: menuItem,
                 items: [
@@ -113,7 +156,7 @@ class _SettingsPageState extends State<SettingsPage> {
               InkWell(
                 splashColor: Colors.teal,
                 onTap: () {
-                  print("Img Selected");
+                  // print("Img Selected");
                 },
                 child: Container(
                   height: 50,
@@ -121,14 +164,6 @@ class _SettingsPageState extends State<SettingsPage> {
                   color: Colors.white12,
                   // child: Image.asset("assets/images/bg.jpg"),
                 ),
-              ),
-              ElevatedButton(
-                onPressed: () {},
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.teal,
-                  foregroundColor: Colors.white,
-                ),
-                child: Text("Click Me"),
               ),
               ElevatedButton(onPressed: () {}, child: Text("Click Me")),
               FilledButton(onPressed: () {}, child: Text("Click Me")),
