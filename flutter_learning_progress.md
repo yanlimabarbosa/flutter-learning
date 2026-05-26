@@ -77,6 +77,13 @@
 - Learned that changing fields, removing fields, changing constructors, or changing root app setup may require hot restart.
 - Learned that values declared inside `build()` are generally more hot-reload-friendly than widget instance fields.
 - Learned that a rejected hot reload can show messages like `Const class cannot remove fields`.
+- Learned that a `Column` inside a `SingleChildScrollView` only takes the height of its children, so `mainAxisAlignment: MainAxisAlignment.center` does not center against the full screen by itself.
+- Learned that `Center + SingleChildScrollView` is a simple way to center a content block when it fits and still allow scrolling.
+- Learned that `LayoutBuilder + ConstrainedBox(minHeight: constraints.maxHeight) + SingleChildScrollView` is the more robust pattern when the content must center relative to the full screen and also scroll on small devices.
+- Learned that mobile keyboards shrink available height and can cause bottom overflow in forms.
+- Fixed login/home overflow by wrapping vertical page content in `SingleChildScrollView`.
+- Learned that parent padding reduces the available width for children, so `width: double.infinity` means full width of the padded area, not necessarily full screen width.
+- Learned to move padding down to only the widgets that need it when one child, such as a Lottie animation, should be full screen width.
 
 ## State Management
 
@@ -96,6 +103,15 @@
 - Learned that `ValueNotifier + ValueListenableBuilder` is good for learning and small UI state, while larger business/app state in the work project uses Cubit/Bloc heavily.
 - Learned that the work project also uses `setState`, `ValueNotifier`, `ValueListenableBuilder`, `ListenableBuilder`, and `.addListener(...)`.
 - Learned that the work project's bottom navigation uses `TabController`, `ListenableBuilder`, and a global `ValueNotifier<int>` for the current bottom navigation index.
+
+## Lifecycle
+
+- Learned that `initState()` is similar to React `useEffect(() => { ... }, [])`: it runs once when the state object is created.
+- Learned that `dispose()` is similar to the cleanup function returned from React `useEffect`: it runs when the widget state is removed.
+- Learned that `build()` is like render and can run many times.
+- Learned that controllers and other disposable objects should usually live inside the `State` class that disposes them.
+- Learned that a top-level/global `TextEditingController` can work in simple demos, but it is shared mutable state and can be reused after disposal if the page is opened again.
+- Moved toward the better pattern: create `TextEditingController`s as fields on the `State` class and dispose them in `dispose()`.
 
 ## Material, Cupertino, And Theming
 
@@ -182,6 +198,9 @@
 - Wrapped the profile page content in `SingleChildScrollView` so the controls can scroll when they exceed the screen height.
 - Added practice examples for `ElevatedButton`, `FilledButton`, `TextButton`, `OutlinedButton`, `CloseButton`, and `BackButton`.
 - Added an `InkWell` tap area and learned that it provides Material tap/splash behavior.
+- Learned that `obscureText: true` hides password input, but Flutter does not add a visibility toggle automatically.
+- Added password visibility state with a `suffixIcon` `IconButton`.
+- Learned that `obscureText: !isPasswordVisible` connects the input behavior to the visibility toggle.
 
 ## Testing
 
@@ -199,6 +218,13 @@
 - Added an image asset under `assets/images/bg.jpg`.
 - Declared asset folders in `pubspec.yaml`.
 - Learned to verify files with the `file` command when image decoding fails.
+- Added Lottie animation assets under `assets/lotties/`.
+- Learned that Lottie animations can be tinted with `LottieDelegates` and `ValueDelegate.colorFilter`.
+- Learned that `BoxFit.contain` preserves aspect ratio and avoids cropping, but may leave empty space.
+- Learned that `BoxFit.cover` preserves aspect ratio and fills the box, but can crop.
+- Learned that `BoxFit.fill` stretches to fill width and height, even if it distorts the animation.
+- Learned that if an animation's own JSON canvas clips shapes at the edge, Flutter cannot recover the missing drawing; the real fix is re-exporting the Lottie with more canvas padding.
+- Learned that wrapping a Lottie in `SizedBox(width: double.infinity)` only fills the width allowed by its parent constraints.
 
 ## Formatting
 
