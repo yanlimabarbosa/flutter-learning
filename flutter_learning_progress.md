@@ -89,6 +89,10 @@
 - Added `isDarkModeNotifier` to control dark/light mode.
 - Learned that the root `MaterialApp` should listen to `isDarkModeNotifier` because the app theme depends on it.
 - Learned that only the dark/light icon button needs its own small `ValueListenableBuilder` if the icon changes between moon and sun.
+- Replaced the simple dark-mode bool with `ValueNotifier<ThemeMode>` so the app can represent `system`, `light`, and `dark`.
+- Learned that `bool` is not enough for theme preference when the app needs a third "follow phone preference" option.
+- Added `loadThemeMode()` to load a saved theme preference before `runApp(...)`.
+- Added `setThemeMode(...)` to update the theme and persist the user choice.
 - Learned that `ValueNotifier + ValueListenableBuilder` is good for learning and small UI state, while larger business/app state in the work project uses Cubit/Bloc heavily.
 - Learned that the work project also uses `setState`, `ValueNotifier`, `ValueListenableBuilder`, `ListenableBuilder`, and `.addListener(...)`.
 - Learned that the work project's bottom navigation uses `TabController`, `ListenableBuilder`, and a global `ValueNotifier<int>` for the current bottom navigation index.
@@ -106,6 +110,12 @@
 - Learned that `useMaterial3: true` enables Material Design 3 defaults.
 - Learned that `ThemeData(colorScheme: ColorScheme.fromSeed(...))` can generate light or dark color schemes by changing `brightness`.
 - Learned that dark/light mode can be implemented by rebuilding `MaterialApp` with a different `ThemeData`.
+- Learned that `theme`, `darkTheme`, and `themeMode` work together:
+  - `theme` is the light theme.
+  - `darkTheme` is the dark theme.
+  - `themeMode` decides whether to use light, dark, or the phone preference.
+- Learned that `ThemeMode.system` follows the phone/emulator dark-mode setting.
+- Added a theme popup menu with System, Light, and Dark choices.
 - Created a `ColorSchemePage` to print and display generated `ColorScheme` values.
 - Moved `ColorSchemePage` into its own file under `lib/screens/color_scheme.dart`.
 - Learned Dart file naming convention: `snake_case.dart`.
@@ -159,6 +169,7 @@
 - Added a `TextField` with a `TextEditingController`.
 - Learned that `TextEditingController.text` stores the current text field value.
 - Learned that `onEditingComplete` can call `setState()` to rebuild text shown from the controller.
+- Added `shared_preferences` for simple persisted local settings, similar to browser `localStorage`.
 - Added a `DropdownButton` with `DropdownMenuItem`s and nullable `String?` state.
 - Learned that dropdown selected values must match one of the item values.
 - Added `Checkbox` and `CheckboxListTile`.
@@ -178,6 +189,10 @@
 - Added a widget test that verifies the app title, home page, and bottom navigation to the profile page.
 - Added a widget test that taps the dark mode icon and verifies it changes to the light mode icon.
 - Learned that generated starter tests can fail after the UI changes and should be updated to test the actual app behavior.
+- Updated tests for the welcome/login flow before reaching the main `WidgetTree`.
+- Updated the theme test to use the new System/Light/Dark popup menu.
+- Learned that infinite animations like Lottie can make `pumpAndSettle()` time out in widget tests.
+- Learned to use fixed-duration `pump(...)` calls when the widget tree has ongoing animations.
 
 ## Assets
 
