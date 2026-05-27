@@ -16,10 +16,16 @@ Yan is a JavaScript/fullstack web developer learning Flutter. Explanations shoul
 
 ### 1. Flutter Basics App
 
-Path:
+Project wrapper path:
 
 ```txt
-/home/yan/codes/flutter-learning/projects/flutter_app
+/home/yan/codes/flutter-learning/projects/flutter_learning_introduction
+```
+
+Flutter app path:
+
+```txt
+/home/yan/codes/flutter-learning/projects/flutter_learning_introduction/flutter_app
 ```
 
 Purpose:
@@ -45,10 +51,10 @@ Use this project for:
 Important docs:
 
 ```txt
-/home/yan/codes/flutter-learning/projects/flutter_app/flutter_learning_progress.md
+/home/yan/codes/flutter-learning/projects/flutter_learning_introduction/flutter_learning_progress.md
 ```
 
-This file is the chronological learning log for the basics learned inside `flutter_app`.
+This file is the chronological learning log for the basics learned inside the nested `flutter_app` app.
 
 ### 2. Work-Focused Learning Project
 
@@ -56,6 +62,12 @@ Path:
 
 ```txt
 /home/yan/codes/flutter-learning/projects/new-project-to-learn-for-work
+```
+
+Flutter app path:
+
+```txt
+/home/yan/codes/flutter-learning/projects/new-project-to-learn-for-work/content_hub
 ```
 
 Purpose:
@@ -191,6 +203,12 @@ For Yan's next serious learning work, use:
 /home/yan/codes/flutter-learning/projects/new-project-to-learn-for-work
 ```
 
+The Flutter app inside that project is:
+
+```txt
+/home/yan/codes/flutter-learning/projects/new-project-to-learn-for-work/content_hub
+```
+
 The intended app is described in:
 
 ```txt
@@ -252,6 +270,37 @@ Future = Promise
 
 Yan can get frustrated when Flutter behavior is surprising. Be concrete about hot reload vs hot restart, state ownership, and where errors appear.
 
+## Learning Project Guidance Rule
+
+For the work-focused learning project, Yan wants to build things himself.
+
+Project:
+
+```txt
+projects/new-project-to-learn-for-work/content_hub
+```
+
+When Yan asks how to do something in this project, the agent should usually:
+
+- explain the goal
+- describe the next step
+- give hints and checkpoints
+- explain what to look for in the output
+- let Yan type commands and code himself
+
+Do not write full code or run commands for Yan in this project unless he explicitly asks with wording like:
+
+```txt
+do it for me
+write the code
+run it
+implement it
+fix it
+create it
+```
+
+If Yan asks for help while learning, prefer guidance over implementation.
+
 ## Documentation Update Protocol
 
 When Yan says something like:
@@ -277,8 +326,8 @@ Before editing docs, determine the current context:
 Use this routing:
 
 ```txt
-Flutter basics learned in projects/flutter_app
-  -> update projects/flutter_app/flutter_learning_progress.md
+Flutter basics learned in projects/flutter_learning_introduction/flutter_app
+  -> update projects/flutter_learning_introduction/flutter_learning_progress.md
 
 Work-focused learning project progress
   -> update projects/new-project-to-learn-for-work/session_progress.md
@@ -325,18 +374,24 @@ Read these first in a new session:
 
 ```txt
 AGENTS.md
-projects/flutter_app/flutter_learning_progress.md
+projects/flutter_learning_introduction/flutter_learning_progress.md
+projects/flutter_learning_introduction/flutter_app/pubspec.yaml
 projects/new-project-to-learn-for-work/ROADMAP.md
 projects/new-project-to-learn-for-work/work_project_architecture_notes.md
 projects/new-project-to-learn-for-work/session_progress.md
+projects/new-project-to-learn-for-work/content_hub/pubspec.yaml
 ```
 
-Use `projects/flutter_app/flutter_learning_progress.md` for what Yan already learned.
+Use `projects/flutter_learning_introduction/flutter_learning_progress.md` for what Yan already learned.
+
+Use `projects/flutter_learning_introduction/flutter_app` as the actual Flutter basics app source.
 
 Use `projects/new-project-to-learn-for-work/ROADMAP.md` for what to build next.
 
 Use `projects/new-project-to-learn-for-work/work_project_architecture_notes.md` to keep guidance aligned with the real job project.
 
 Use `projects/new-project-to-learn-for-work/session_progress.md` to know what has already been decided and what to implement next.
+
+Use `projects/new-project-to-learn-for-work/content_hub` as the actual work-focused Flutter app source.
 
 Use `other_docs/mobile_specific_roadmap.md` only as a later-stage reference for mobile-specific topics, not as the immediate learning plan.
