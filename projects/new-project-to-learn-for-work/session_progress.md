@@ -8,6 +8,12 @@ Project path:
 /home/yan/codes/flutter-learning/projects/new-project-to-learn-for-work
 ```
 
+Flutter app path:
+
+```txt
+/home/yan/codes/flutter-learning/projects/new-project-to-learn-for-work/content_hub
+```
+
 Purpose:
 
 ```txt
@@ -31,6 +37,9 @@ UI -> Cubit -> Repository -> Dio/API -> Models
 - The learning project should become a controlled practice version of the real job architecture.
 - Strapi will be added later to mirror the production API response shape.
 - Firebase will be added later for auth and mobile integrations.
+- Yan should build this project himself as much as possible.
+- Agents should guide with hints, explanations, and checkpoints instead of writing code or running commands.
+- Agents should only implement code or run commands in this project when Yan explicitly asks them to do it.
 
 ## Skills This Project Should Teach
 
@@ -59,18 +68,14 @@ Read these files before implementing:
 ../../index.md
 ROADMAP.md
 work_project_architecture_notes.md
+content_hub/pubspec.yaml
 ```
 
 ## Next Implementation Step
 
-Create the Flutter app in this folder:
+The Flutter app has been initialized as `content_hub`.
 
-```bash
-cd /home/yan/codes/flutter-learning/projects/new-project-to-learn-for-work
-fvm flutter create .
-```
-
-Then start with Phase 1 from `ROADMAP.md`:
+Start with Phase 1 from `ROADMAP.md`:
 
 - create static screens
 - wire navigation
@@ -85,4 +90,3 @@ When resuming this project:
 3. Read `work_project_architecture_notes.md`.
 4. Read this `session_progress.md`.
 5. Continue from the next unfinished phase.
-
