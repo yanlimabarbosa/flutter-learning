@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Content Hub - Signup</title>
+    <link rel="stylesheet" href="./login_palette_base.css" />
+    <style>
+      :root {
+        --page-bg: radial-gradient(circle at 50% 0%, rgba(139, 218, 255, 0.16), transparent 34%),
+          linear-gradient(145deg, #0b0c0f, #101114 58%, #171b22);
+        --bg: #101114;
+        --surface: #181a20;
+        --surface-strong: #20232b;
+        --primary: #8bdaff;
+        --accent: #f4c95d;
+        --text: #f5f7fa;
+        --muted: #a8afbd;
+        --line: rgba(245, 247, 250, 0.12);
+        --placeholder: #777f8f;
+        --brand-bg: linear-gradient(135deg, var(--primary), #f8fcff);
+        --brand-text: #081218;
+        --pill-bg: rgba(139, 218, 255, 0.1);
+        --feature-bg: linear-gradient(160deg, rgba(139, 218, 255, 0.18), transparent 58%),
+          var(--surface-strong);
+        --focus-ring: 0 0 0 3px rgba(139, 218, 255, 0.12);
+        --button-text: #081218;
+      }
+
+      .signup-panel {
+        padding: 18px;
+        border-radius: 8px;
+        background: var(--surface);
+        border: 1px solid var(--line);
+      }
+
+      .helper-row {
+        margin: 0 0 14px;
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.45;
+      }
+
+      .terms {
+        margin: 14px 0 2px;
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.45;
+      }
+
+      .terms a {
+        color: var(--primary);
+        text-decoration: none;
+        font-weight: 700;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="phone">
+      <section class="screen">
+        <header class="topbar">
+          <div class="brand-mark">CH</div>
+          <div class="status-pill">New account</div>
+        </header>
+
+        <section class="hero">
+          <p class="eyebrow">Start Learning</p>
+          <h1>Create your content library.</h1>
+          <p class="hero-copy">
+            Save courses, track progress, and keep your study path available across devices.
+          </p>
+        </section>
+
+        <section class="featured" aria-label="Signup benefits">
+          <article class="feature-card">
+            <strong>Personal path</strong>
+            <span>Build a library around the skills you are learning.</span>
+          </article>
+          <article class="feature-card">
+            <strong>Sync later</strong>
+            <span>Prepare for auth, offline data, and real API flows.</span>
+          </article>
+        </section>
+
+        <section class="signup-panel" aria-label="Signup form">
+          <p class="helper-row">Use this as the future Firebase Auth entry point.</p>
+          <input class="field" type="text" placeholder="Name" />
+          <input class="field" type="email" placeholder="Email" />
+          <input class="field" type="password" placeholder="Password" />
+          <input class="field" type="password" placeholder="Confirm password" />
+          <div class="actions">
+            <button class="primary-button">Create account</button>
+            <button class="ghost-button">Already have an account?</button>
+          </div>
+          <p class="terms">
+            By continuing, you agree to keep this demo aligned with the future
+            <a href="#">Firebase</a> and <a href="#">API</a> flow.
+          </p>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>
