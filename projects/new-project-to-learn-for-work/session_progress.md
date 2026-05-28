@@ -68,6 +68,7 @@ Read these files before implementing:
 ../../index.md
 ROADMAP.md
 work_project_architecture_notes.md
+review_checklist.md
 content_hub/pubspec.yaml
 ```
 
@@ -89,4 +90,62 @@ When resuming this project:
 2. Read `ROADMAP.md`.
 3. Read `work_project_architecture_notes.md`.
 4. Read this `session_progress.md`.
-5. Continue from the next unfinished phase.
+5. Read `review_checklist.md` before reviewing code.
+6. Continue from the next unfinished phase.
+
+## Review Preference Added
+
+When Yan asks whether Flutter code is clean or asks for a review, do not only check compiler correctness.
+
+Also review:
+
+- widget extraction quality
+- naming clarity
+- layout ownership
+- semantic `ColorScheme` usage
+- whether `on...` colors are being used as foreground colors
+- whether `AppColors` is leaking into widgets unnecessarily
+- visual match against the current prototype
+
+The full checklist is documented in:
+
+```txt
+review_checklist.md
+```
+
+## Android Emulator Color Fix
+
+The Pixel phone emulator was showing dark colors warmer/lighter than Chrome web and the tablet emulator. The Flutter theme was not the cause: the issue was the emulator's host GPU rendering path.
+
+Working fix:
+
+```txt
+AVD: Pixel_7_API_35
+Graphics: SwiftShader software rendering
+```
+
+Command that proved the fix:
+
+```bash
+emulator -avd Pixel_7_API_35 -gpu swiftshader_indirect -no-snapshot-load
+```
+
+Permanent AVD config:
+
+```txt
+/home/yan/.android/avd/Pixel_7_API_35.avd/config.ini
+```
+
+Important values:
+
+```ini
+hw.gpu.enabled=yes
+hw.gpu.mode=swiftshader_indirect
+hw.lcd.depth=32
+hw.ramSize=4096M
+vm.heapSize=512M
+disk.dataPartition.size=6G
+PlayStore.enabled=yes
+```
+
+Use this emulator for UI/color work. SwiftShader may be slower than hardware GPU, but it avoids the dark-color distortion caused by the host GPU/Mesa path.

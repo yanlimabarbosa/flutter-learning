@@ -102,6 +102,7 @@ Important docs:
 /home/yan/codes/flutter-learning/projects/new-project-to-learn-for-work/ROADMAP.md
 /home/yan/codes/flutter-learning/projects/new-project-to-learn-for-work/work_project_architecture_notes.md
 /home/yan/codes/flutter-learning/projects/new-project-to-learn-for-work/session_progress.md
+/home/yan/codes/flutter-learning/projects/new-project-to-learn-for-work/review_checklist.md
 ```
 
 `ROADMAP.md` describes the app Yan should build to learn the job-relevant stack.
@@ -109,6 +110,8 @@ Important docs:
 `work_project_architecture_notes.md` explains the architecture of the real work project and how to mirror it.
 
 `session_progress.md` tracks practical progress and the next implementation step for this work-focused learning project.
+
+`review_checklist.md` explains how to review Yan's Flutter code beyond compile errors, including widget extraction, naming, layout semantics, and color/theme semantics.
 
 ### 3. Other Docs
 
@@ -332,6 +335,9 @@ Flutter basics learned in projects/flutter_learning_introduction/flutter_app
 Work-focused learning project progress
   -> update projects/new-project-to-learn-for-work/session_progress.md
 
+Work-focused code review preferences/checklist
+  -> update projects/new-project-to-learn-for-work/review_checklist.md
+
 Work-focused roadmap changes or future implementation phases
   -> update projects/new-project-to-learn-for-work/ROADMAP.md
 
@@ -379,6 +385,7 @@ projects/flutter_learning_introduction/flutter_app/pubspec.yaml
 projects/new-project-to-learn-for-work/ROADMAP.md
 projects/new-project-to-learn-for-work/work_project_architecture_notes.md
 projects/new-project-to-learn-for-work/session_progress.md
+projects/new-project-to-learn-for-work/review_checklist.md
 projects/new-project-to-learn-for-work/content_hub/pubspec.yaml
 ```
 
@@ -391,6 +398,8 @@ Use `projects/new-project-to-learn-for-work/ROADMAP.md` for what to build next.
 Use `projects/new-project-to-learn-for-work/work_project_architecture_notes.md` to keep guidance aligned with the real job project.
 
 Use `projects/new-project-to-learn-for-work/session_progress.md` to know what has already been decided and what to implement next.
+
+Use `projects/new-project-to-learn-for-work/review_checklist.md` when Yan asks for a code review or asks whether current Flutter code is clean.
 
 Use `projects/new-project-to-learn-for-work/content_hub` as the actual work-focused Flutter app source.
 
