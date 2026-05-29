@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "652996441261",
+    "project_id": "content-hub-yan-2026",
+    "storage_bucket": "content-hub-yan-2026.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:652996441261:android:c45e708048371c95b00224",
+        "android_client_info": {
+          "package_name": "com.example.content_hub"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA5Y0lH5-QxdiVfLPfIIGXrkFte77CH1DY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
