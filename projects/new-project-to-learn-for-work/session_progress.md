@@ -35,8 +35,12 @@ UI -> Cubit -> Repository -> Dio/API -> Models
 - The learning project should focus on Cubit first.
 - Classic `Bloc<Event, State>` should only be studied later if needed.
 - The learning project should become a controlled practice version of the real job architecture.
-- Strapi will be added later to mirror the production API response shape.
-- Firebase will be added later for auth and mobile integrations.
+- Strapi should become the main backend/API mirror, including auth/JWT and course/lesson data.
+- Content creation should be handled through Strapi admin for the MVP.
+- The Flutter app should stay student-facing for now: login, signup, home, catalog, course detail, lesson/player, saved courses, progress, profile, settings, and account recovery.
+- Public content creator registration and creator dashboard screens are out of scope for the MVP.
+- Firebase Auth was useful as a learning detour, but it should not be treated as the final mirror of the work project.
+- Firebase should be added later for mobile infrastructure such as push notifications, analytics, remote config, and diagnostics.
 - Yan should build this project himself as much as possible.
 - Agents should guide with hints, explanations, and checkpoints instead of writing code or running commands.
 - Agents should only implement code or run commands in this project when Yan explicitly asks them to do it.
@@ -56,7 +60,6 @@ UI -> Cubit -> Repository -> Dio/API -> Models
 - `HydratedCubit`
 - Strapi API shape
 - Strapi auth/JWT
-- Firebase Auth
 - Firebase Messaging/local notifications
 - analytics/error tracking
 
@@ -67,6 +70,7 @@ Read these files before implementing:
 ```txt
 ../../index.md
 ROADMAP.md
+MIRROR_IMPLEMENTATION_PLAN.md
 work_project_architecture_notes.md
 review_checklist.md
 content_hub/pubspec.yaml
@@ -76,11 +80,33 @@ content_hub/pubspec.yaml
 
 The Flutter app has been initialized as `content_hub`.
 
-Start with Phase 1 from `ROADMAP.md`:
+Planning docs and prototypes were updated to match the Strapi-admin/student-app split.
 
-- create static screens
-- wire navigation
-- avoid Cubit until the baseline UI exists
+Current prototype references:
+
+```txt
+prototypes/prototype_gallery.html
+prototypes/login_modern_editorial.html
+prototypes/signup_modern_editorial.html
+prototypes/home_authenticated_modern_editorial.html
+prototypes/course_catalog_modern_editorial.html
+prototypes/course_detail_modern_editorial.html
+prototypes/lesson_detail_modern_editorial.html
+prototypes/saved_courses_modern_editorial.html
+prototypes/progress_modern_editorial.html
+prototypes/profile_modern_editorial.html
+prototypes/settings_modern_editorial.html
+prototypes/password_reset_modern_editorial.html
+prototypes/account_confirmation_pending_modern_editorial.html
+```
+
+Next, follow `MIRROR_IMPLEMENTATION_PLAN.md`:
+
+1. Create the local Strapi backend in `content_hub_api`.
+2. Create `Course` and `Lesson` content types.
+3. Add sample course/lesson data in Strapi admin.
+4. Add Dio and fetch courses through `ApiClient -> Repository -> Cubit`.
+5. Replace Firebase Auth learning code with Strapi auth/JWT when the data flow is stable.
 
 ## Notes For Future Sessions
 
@@ -88,10 +114,11 @@ When resuming this project:
 
 1. Read `../../index.md`.
 2. Read `ROADMAP.md`.
-3. Read `work_project_architecture_notes.md`.
-4. Read this `session_progress.md`.
-5. Read `review_checklist.md` before reviewing code.
-6. Continue from the next unfinished phase.
+3. Read `MIRROR_IMPLEMENTATION_PLAN.md`.
+4. Read `work_project_architecture_notes.md`.
+5. Read this `session_progress.md`.
+6. Read `review_checklist.md` before reviewing code.
+7. Continue from the next unfinished phase.
 
 ## Review Preference Added
 

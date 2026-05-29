@@ -101,6 +101,7 @@ Important docs:
 ```txt
 /home/yan/codes/flutter-learning/projects/new-project-to-learn-for-work/ROADMAP.md
 /home/yan/codes/flutter-learning/projects/new-project-to-learn-for-work/PRODUCT_PLAN.md
+/home/yan/codes/flutter-learning/projects/new-project-to-learn-for-work/MIRROR_IMPLEMENTATION_PLAN.md
 /home/yan/codes/flutter-learning/projects/new-project-to-learn-for-work/work_project_architecture_notes.md
 /home/yan/codes/flutter-learning/projects/new-project-to-learn-for-work/session_progress.md
 /home/yan/codes/flutter-learning/projects/new-project-to-learn-for-work/review_checklist.md
@@ -109,6 +110,8 @@ Important docs:
 `ROADMAP.md` describes the app Yan should build to learn the job-relevant stack.
 
 `PRODUCT_PLAN.md` defines what Content Hub is as a product, including users, core flows, production requirements, data model, and screen/prototype plan.
+
+`MIRROR_IMPLEMENTATION_PLAN.md` defines the practical step-by-step build plan for mirroring the real work project: Strapi backend, Dio API service, repositories, Cubits, typed models, then Firebase infrastructure later.
 
 `work_project_architecture_notes.md` explains the architecture of the real work project and how to mirror it.
 

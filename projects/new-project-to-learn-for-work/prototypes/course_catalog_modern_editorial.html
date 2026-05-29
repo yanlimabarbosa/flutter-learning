@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Content Hub - Course Catalog</title>
+    <link rel="stylesheet" href="./login_palette_base.css" />
+    <style>
+      :root {
+        --page-bg: radial-gradient(circle at 50% 0%, rgba(139, 218, 255, 0.16), transparent 34%),
+          linear-gradient(145deg, #0b0c0f, #101114 58%, #171b22);
+        --bg: #101114;
+        --surface: #181a20;
+        --surface-strong: #20232b;
+        --primary: #8bdaff;
+        --accent: #f4c95d;
+        --text: #f5f7fa;
+        --muted: #a8afbd;
+        --line: rgba(245, 247, 250, 0.12);
+        --placeholder: #777f8f;
+        --brand-bg: linear-gradient(135deg, var(--primary), #f8fcff);
+        --brand-text: #081218;
+        --pill-bg: rgba(139, 218, 255, 0.1);
+        --feature-bg: linear-gradient(160deg, rgba(139, 218, 255, 0.18), transparent 58%),
+          var(--surface-strong);
+        --focus-ring: 0 0 0 3px rgba(139, 218, 255, 0.12);
+        --button-text: #081218;
+      }
+
+      .screen {
+        gap: 22px;
+      }
+
+      .icon-button {
+        width: 42px;
+        height: 42px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: var(--surface);
+        color: var(--primary);
+        font-weight: 900;
+      }
+
+      .catalog-header h1 {
+        font-size: 38px;
+      }
+
+      .search {
+        height: 52px;
+        border-radius: 8px;
+        padding: 0 15px;
+        display: flex;
+        align-items: center;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        color: var(--placeholder);
+      }
+
+      .filter-row {
+        display: flex;
+        gap: 10px;
+        overflow: hidden;
+      }
+
+      .filter-chip {
+        flex: 0 0 auto;
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: var(--pill-bg);
+        color: var(--primary);
+        font-size: 12px;
+        font-weight: 800;
+      }
+
+      .course-list {
+        display: grid;
+        gap: 14px;
+      }
+
+      .course-card {
+        border-radius: 8px;
+        overflow: hidden;
+        background: var(--surface);
+        border: 1px solid var(--line);
+      }
+
+      .course-media {
+        height: 118px;
+        background:
+          linear-gradient(135deg, rgba(139, 218, 255, 0.22), transparent 55%),
+          linear-gradient(160deg, #26313d, #151821);
+      }
+
+      .course-body {
+        padding: 16px;
+      }
+
+      .course-body strong {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 17px;
+      }
+
+      .course-body p,
+      .course-meta {
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.45;
+      }
+
+      .course-meta {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="phone">
+      <section class="screen">
+        <header class="topbar">
+          <div class="brand-mark">CH</div>
+          <button class="icon-button">Y</button>
+        </header>
+
+        <section class="catalog-header">
+          <p class="eyebrow">Catalog</p>
+          <h1>Choose what to learn next.</h1>
+          <p class="hero-copy">
+            Browse courses curated for focused progress, practical skills, and steady study.
+          </p>
+        </section>
+
+        <div class="search">Search courses</div>
+
+        <nav class="filter-row" aria-label="Course filters">
+          <span class="filter-chip">All</span>
+          <span class="filter-chip">Mobile</span>
+          <span class="filter-chip">Data</span>
+          <span class="filter-chip">Saved</span>
+        </nav>
+
+        <section class="course-list" aria-label="Courses">
+          <article class="course-card">
+            <div class="course-media"></div>
+            <div class="course-body">
+              <strong>Structured Flutter State</strong>
+              <p>Build predictable screens with loading, success, and failure states.</p>
+              <div class="course-meta">
+                <span>8 lessons</span>
+                <span>Beginner</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="course-card">
+            <div class="course-media"></div>
+            <div class="course-body">
+              <strong>Connected Mobile Apps</strong>
+              <p>Load real content and render useful loading, empty, and error states.</p>
+              <div class="course-meta">
+                <span>10 lessons</span>
+                <span>Intermediate</span>
+              </div>
+            </div>
+          </article>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>

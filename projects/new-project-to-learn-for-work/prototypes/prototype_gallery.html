@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Content Hub - Prototype Gallery</title>
+    <style>
+      :root {
+        --page-bg: #0d0f13;
+        --panel: #15181f;
+        --panel-strong: #1d222b;
+        --line: rgba(245, 247, 250, 0.12);
+        --text: #f5f7fa;
+        --muted: #a8afbd;
+        --primary: #8bdaff;
+        --accent: #f4c95d;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background:
+          radial-gradient(circle at 12% 0%, rgba(139, 218, 255, 0.1), transparent 32%),
+          var(--page-bg);
+        color: var(--text);
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+      }
+
+      .shell {
+        min-height: 100vh;
+        display: grid;
+        grid-template-columns: 280px minmax(0, 1fr);
+      }
+
+      .sidebar {
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        padding: 24px;
+        overflow: auto;
+        border-right: 1px solid var(--line);
+        background: rgba(21, 24, 31, 0.92);
+        backdrop-filter: blur(16px);
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 28px;
+      }
+
+      .brand-mark {
+        width: 44px;
+        height: 44px;
+        border-radius: 12px;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(135deg, var(--primary), #f8fcff);
+        color: #081218;
+        font-weight: 900;
+      }
+
+      .brand-text strong,
+      .brand-text span {
+        display: block;
+      }
+
+      .brand-text strong {
+        font-size: 15px;
+      }
+
+      .brand-text span {
+        color: var(--muted);
+        font-size: 12px;
+        margin-top: 2px;
+      }
+
+      .nav-group {
+        display: grid;
+        gap: 8px;
+      }
+
+      .nav-button {
+        width: 100%;
+        border: 1px solid transparent;
+        border-radius: 8px;
+        padding: 12px 13px;
+        background: transparent;
+        color: var(--muted);
+        text-align: left;
+        font: inherit;
+        font-size: 13px;
+        font-weight: 800;
+        cursor: pointer;
+      }
+
+      .nav-button:hover,
+      .nav-button.is-active {
+        border-color: var(--line);
+        background: var(--panel-strong);
+        color: var(--text);
+      }
+
+      .nav-button.is-active {
+        box-shadow: inset 3px 0 0 var(--primary);
+      }
+
+      .workspace {
+        min-width: 0;
+        padding: 24px;
+      }
+
+      .toolbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        margin-bottom: 18px;
+      }
+
+      .screen-title {
+        min-width: 0;
+      }
+
+      .screen-title p {
+        margin: 0 0 6px;
+        color: var(--accent);
+        font-size: 11px;
+        font-weight: 900;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .screen-title h1 {
+        margin: 0;
+        font-size: 24px;
+      }
+
+      .open-link {
+        flex: 0 0 auto;
+        border-radius: 999px;
+        padding: 10px 14px;
+        border: 1px solid var(--line);
+        background: rgba(139, 218, 255, 0.1);
+        color: var(--primary);
+        text-decoration: none;
+        font-size: 12px;
+        font-weight: 900;
+      }
+
+      .preview-frame {
+        width: 100%;
+        height: calc(100vh - 110px);
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        background: #050608;
+        overflow: hidden;
+      }
+
+      iframe {
+        display: block;
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
+
+      @media (max-width: 860px) {
+        .shell {
+          grid-template-columns: 1fr;
+        }
+
+        .sidebar {
+          position: static;
+          height: auto;
+          border-right: 0;
+          border-bottom: 1px solid var(--line);
+        }
+
+        .nav-group {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .workspace {
+          padding: 16px;
+        }
+
+        .toolbar {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .preview-frame {
+          height: 78vh;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-mark">CH</div>
+          <div class="brand-text">
+            <strong>Content Hub</strong>
+            <span>Prototype gallery</span>
+          </div>
+        </div>
+
+        <nav class="nav-group" aria-label="Prototype screens">
+          <button class="nav-button is-active" data-title="Login" data-src="./login_modern_editorial.html">
+            Login
+          </button>
+          <button class="nav-button" data-title="Signup" data-src="./signup_modern_editorial.html">
+            Signup
+          </button>
+          <button class="nav-button" data-title="Authenticated Home" data-src="./home_authenticated_modern_editorial.html">
+            Authenticated Home
+          </button>
+          <button class="nav-button" data-title="Course Catalog" data-src="./course_catalog_modern_editorial.html">
+            Course Catalog
+          </button>
+          <button class="nav-button" data-title="Course Detail" data-src="./course_detail_modern_editorial.html">
+            Course Detail
+          </button>
+          <button class="nav-button" data-title="Lesson Detail" data-src="./lesson_detail_modern_editorial.html">
+            Lesson Detail
+          </button>
+          <button class="nav-button" data-title="Saved Courses" data-src="./saved_courses_modern_editorial.html">
+            Saved Courses
+          </button>
+          <button class="nav-button" data-title="Progress" data-src="./progress_modern_editorial.html">
+            Progress
+          </button>
+          <button class="nav-button" data-title="Profile" data-src="./profile_modern_editorial.html">
+            Profile
+          </button>
+          <button class="nav-button" data-title="Settings" data-src="./settings_modern_editorial.html">
+            Settings
+          </button>
+          <button class="nav-button" data-title="Password Reset" data-src="./password_reset_modern_editorial.html">
+            Password Reset
+          </button>
+          <button class="nav-button" data-title="Account Confirmation" data-src="./account_confirmation_pending_modern_editorial.html">
+            Account Confirmation
+          </button>
+        </nav>
+      </aside>
+
+      <section class="workspace">
+        <header class="toolbar">
+          <div class="screen-title">
+            <p>Current screen</p>
+            <h1 id="screenTitle">Login</h1>
+          </div>
+          <a id="openLink" class="open-link" href="./login_modern_editorial.html" target="_blank" rel="noreferrer">
+            Open standalone
+          </a>
+        </header>
+
+        <div class="preview-frame">
+          <iframe id="previewFrame" title="Selected prototype screen" src="./login_modern_editorial.html"></iframe>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const buttons = document.querySelectorAll(".nav-button");
+      const title = document.querySelector("#screenTitle");
+      const frame = document.querySelector("#previewFrame");
+      const openLink = document.querySelector("#openLink");
+
+      function selectScreen(button) {
+        buttons.forEach((item) => item.classList.remove("is-active"));
+        button.classList.add("is-active");
+
+        const nextTitle = button.dataset.title;
+        const nextSrc = button.dataset.src;
+
+        title.textContent = nextTitle;
+        frame.src = nextSrc;
+        openLink.href = nextSrc;
+        window.location.hash = nextTitle.toLowerCase().replaceAll(" ", "-");
+      }
+
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => selectScreen(button));
+      });
+
+      const initialHash = window.location.hash.slice(1);
+      if (initialHash) {
+        const initialButton = [...buttons].find(
+          (button) => button.dataset.title.toLowerCase().replaceAll(" ", "-") === initialHash,
+        );
+
+        if (initialButton) selectScreen(initialButton);
+      }
+    </script>
+  </body>
+</html>

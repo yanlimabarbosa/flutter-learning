@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Content Hub - Profile</title>
+    <link rel="stylesheet" href="./login_palette_base.css" />
+    <style>
+      :root {
+        --page-bg: radial-gradient(circle at 50% 0%, rgba(139, 218, 255, 0.16), transparent 34%),
+          linear-gradient(145deg, #0b0c0f, #101114 58%, #171b22);
+        --bg: #101114;
+        --surface: #181a20;
+        --surface-strong: #20232b;
+        --primary: #8bdaff;
+        --accent: #f4c95d;
+        --text: #f5f7fa;
+        --muted: #a8afbd;
+        --line: rgba(245, 247, 250, 0.12);
+        --placeholder: #777f8f;
+        --brand-bg: linear-gradient(135deg, var(--primary), #f8fcff);
+        --brand-text: #081218;
+        --pill-bg: rgba(139, 218, 255, 0.1);
+        --feature-bg: linear-gradient(160deg, rgba(139, 218, 255, 0.18), transparent 58%),
+          var(--surface-strong);
+        --focus-ring: 0 0 0 3px rgba(139, 218, 255, 0.12);
+        --button-text: #081218;
+      }
+
+      .profile-card,
+      .menu-item {
+        border-radius: 8px;
+        background: var(--surface);
+        border: 1px solid var(--line);
+      }
+
+      .profile-card {
+        padding: 18px;
+        text-align: center;
+      }
+
+      .avatar-large {
+        width: 78px;
+        height: 78px;
+        margin: 0 auto 16px;
+        border-radius: 999px;
+        display: grid;
+        place-items: center;
+        background: var(--feature-bg);
+        color: var(--primary);
+        font-size: 28px;
+        font-weight: 900;
+      }
+
+      .profile-card h1 {
+        font-size: 28px;
+      }
+
+      .profile-card p,
+      .menu-item span {
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+
+      .menu {
+        display: grid;
+        gap: 10px;
+      }
+
+      .menu-item {
+        padding: 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="phone">
+      <section class="screen">
+        <header class="topbar">
+          <div class="brand-mark">CH</div>
+          <div class="status-pill">Profile</div>
+        </header>
+
+        <section class="profile-card">
+          <div class="avatar-large">Y</div>
+          <h1>Yan Learner</h1>
+          <p>yan@example.com</p>
+        </section>
+
+        <section class="featured stats" aria-label="Profile stats">
+          <article class="feature-card">
+            <strong>03</strong>
+            <span>Saved courses</span>
+          </article>
+          <article class="feature-card">
+            <strong>68%</strong>
+            <span>Current path</span>
+          </article>
+        </section>
+
+        <section class="menu" aria-label="Profile actions">
+          <article class="menu-item">
+            <strong>Saved courses</strong>
+            <span>Open</span>
+          </article>
+          <article class="menu-item">
+            <strong>Learning progress</strong>
+            <span>View</span>
+          </article>
+          <article class="menu-item">
+            <strong>Settings</strong>
+            <span>Edit</span>
+          </article>
+        </section>
+
+        <button class="ghost-button">Sign out</button>
+      </section>
+    </main>
+  </body>
+</html>

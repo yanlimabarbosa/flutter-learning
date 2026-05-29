@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Content Hub - Settings</title>
+    <link rel="stylesheet" href="./login_palette_base.css" />
+    <style>
+      :root {
+        --page-bg: radial-gradient(circle at 50% 0%, rgba(139, 218, 255, 0.16), transparent 34%),
+          linear-gradient(145deg, #0b0c0f, #101114 58%, #171b22);
+        --bg: #101114;
+        --surface: #181a20;
+        --surface-strong: #20232b;
+        --primary: #8bdaff;
+        --accent: #f4c95d;
+        --text: #f5f7fa;
+        --muted: #a8afbd;
+        --line: rgba(245, 247, 250, 0.12);
+        --placeholder: #777f8f;
+        --brand-bg: linear-gradient(135deg, var(--primary), #f8fcff);
+        --brand-text: #081218;
+        --pill-bg: rgba(139, 218, 255, 0.1);
+        --feature-bg: linear-gradient(160deg, rgba(139, 218, 255, 0.18), transparent 58%),
+          var(--surface-strong);
+        --focus-ring: 0 0 0 3px rgba(139, 218, 255, 0.12);
+        --button-text: #081218;
+      }
+
+      .settings-list {
+        display: grid;
+        gap: 10px;
+      }
+
+      .setting-row {
+        padding: 16px;
+        border-radius: 8px;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+      }
+
+      .setting-row span {
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .toggle {
+        width: 44px;
+        height: 26px;
+        border-radius: 999px;
+        background: var(--primary);
+        position: relative;
+      }
+
+      .toggle::after {
+        content: "";
+        position: absolute;
+        right: 4px;
+        top: 4px;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background: var(--button-text);
+      }
+    </style>
+  </head>
+  <body>
+    <main class="phone">
+      <section class="screen">
+        <header class="topbar">
+          <div class="brand-mark">CH</div>
+          <div class="status-pill">Settings</div>
+        </header>
+
+        <section>
+          <p class="eyebrow">Preferences</p>
+          <h1>Keep the app yours.</h1>
+          <p class="hero-copy">Tune notifications, downloads, and account preferences.</p>
+        </section>
+
+        <section class="settings-list" aria-label="Settings">
+          <article class="setting-row">
+            <div>
+              <strong>Download over Wi-Fi</strong>
+              <br />
+              <span>Save mobile data when storing lessons.</span>
+            </div>
+            <div class="toggle"></div>
+          </article>
+          <article class="setting-row">
+            <div>
+              <strong>Learning reminders</strong>
+              <br />
+              <span>Receive gentle nudges to continue.</span>
+            </div>
+            <div class="toggle"></div>
+          </article>
+          <article class="setting-row">
+            <div>
+              <strong>Account security</strong>
+              <br />
+              <span>Password and session options.</span>
+            </div>
+            <span>Open</span>
+          </article>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>

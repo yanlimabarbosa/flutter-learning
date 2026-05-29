@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Content Hub - Lesson Detail</title>
+    <link rel="stylesheet" href="./login_palette_base.css" />
+    <style>
+      :root {
+        --page-bg: radial-gradient(circle at 50% 0%, rgba(139, 218, 255, 0.16), transparent 34%),
+          linear-gradient(145deg, #0b0c0f, #101114 58%, #171b22);
+        --bg: #101114;
+        --surface: #181a20;
+        --surface-strong: #20232b;
+        --primary: #8bdaff;
+        --accent: #f4c95d;
+        --text: #f5f7fa;
+        --muted: #a8afbd;
+        --line: rgba(245, 247, 250, 0.12);
+        --placeholder: #777f8f;
+        --brand-bg: linear-gradient(135deg, var(--primary), #f8fcff);
+        --brand-text: #081218;
+        --pill-bg: rgba(139, 218, 255, 0.1);
+        --feature-bg: linear-gradient(160deg, rgba(139, 218, 255, 0.18), transparent 58%),
+          var(--surface-strong);
+        --focus-ring: 0 0 0 3px rgba(139, 218, 255, 0.12);
+        --button-text: #081218;
+      }
+
+      .screen {
+        gap: 22px;
+      }
+
+      .player {
+        aspect-ratio: 16 / 9;
+        border-radius: 8px;
+        display: grid;
+        place-items: center;
+        background:
+          radial-gradient(circle at 50% 48%, rgba(139, 218, 255, 0.28), transparent 22%),
+          linear-gradient(145deg, #151b23, #080a0d);
+        border: 1px solid var(--line);
+      }
+
+      .play {
+        width: 64px;
+        height: 64px;
+        border-radius: 999px;
+        border: 0;
+        background: var(--primary);
+        color: var(--button-text);
+        font-weight: 900;
+      }
+
+      .lesson h1 {
+        font-size: 34px;
+      }
+
+      .note-card {
+        padding: 16px;
+        border-radius: 8px;
+        background: var(--surface);
+        border: 1px solid var(--line);
+      }
+
+      .note-card strong {
+        display: block;
+        margin-bottom: 8px;
+      }
+
+      .note-card p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.5;
+      }
+
+      .lesson-actions {
+        margin-top: auto;
+        display: grid;
+        gap: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="phone">
+      <section class="screen">
+        <header class="topbar">
+          <div class="brand-mark">CH</div>
+          <div class="status-pill">Lesson 2 of 8</div>
+        </header>
+
+        <div class="player">
+          <button class="play">Play</button>
+        </div>
+
+        <section class="lesson">
+          <p class="eyebrow">Now Learning</p>
+          <h1>Connecting screens to data</h1>
+          <p class="hero-copy">
+            Keep UI code focused on rendering while app state coordinates data, loading, and error behavior.
+          </p>
+        </section>
+
+        <article class="note-card">
+          <strong>Lesson notes</strong>
+          <p>
+            A clean screen focuses on what the user sees while the app handles loading, empty, success, and error paths behind it.
+          </p>
+        </article>
+
+        <div class="lesson-actions">
+          <button class="primary-button">Mark as complete</button>
+          <button class="ghost-button">Next lesson</button>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

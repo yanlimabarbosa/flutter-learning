@@ -22,12 +22,15 @@ The first version is student-first:
 - track basic progress
 - manage profile/account
 
-Later versions add creator/admin workflows:
+Content management is internal:
 
-- content creators can create courses
-- content creators can manage lessons
-- admins can review/publish content
-- users can consume published courses
+- admins/content managers use the Strapi admin panel in the browser
+- admins create courses
+- admins create lessons
+- admins publish/unpublish content
+- mobile users consume published courses
+
+The MVP is not an open creator marketplace. Users cannot register as content creators from the mobile app.
 
 The product is intentionally shaped like a small course/content app because it gives useful practice with auth, lists, detail pages, forms, remote data, local persistence, media, roles, and API architecture.
 
@@ -65,29 +68,29 @@ Student goals:
 - track progress
 - manage profile
 
-### Content Creator
+### Internal Content Manager
 
-The creator is a later user type.
+The content manager is not a public mobile-app user type in the MVP.
 
-Creator goals:
+Content manager goals:
 
+- use Strapi admin in the browser
 - create course draft
 - add course metadata
-- upload or attach lesson media
+- upload thumbnails or attach media URLs
 - organize lesson order
-- publish/unpublish course
-- view basic engagement stats
+- publish/unpublish courses
 
 ### Admin
 
-The admin is optional and later-stage.
+The admin is handled through Strapi admin for the MVP.
 
 Admin goals:
 
 - manage users
 - manage published content
-- review creator submissions
-- moderate unsafe or invalid content
+- manage course/lesson records
+- configure permissions
 
 ## Core Product Rules
 
@@ -98,7 +101,8 @@ Admin goals:
 - Video/media files are not stored inside the app repository.
 - Progress is associated with a signed-in user.
 - Saved courses are associated with a signed-in user.
-- Creator features should not block the student MVP.
+- Content creation happens in Strapi admin, not in the Flutter app.
+- Public creator registration is out of scope.
 
 ## Content And Video Storage Model
 
@@ -129,20 +133,24 @@ Only add real media upload/playback after the API flow is solid.
 
 ## Data Model
 
-### Firebase Auth User
+### Authenticated User
 
-Firebase owns auth identity.
+Target mirror: Strapi/API owns the app auth flow through email/password and JWT.
+
+Firebase Auth may stay temporarily as a learning experiment, but it is not the final architecture to mirror from the work project.
 
 Important fields:
 
-- `uid`
+- `id`
 - `email`
-- `displayName`
-- `emailVerified`
-- `metadata.creationTime`
-- `metadata.lastSignInTime`
+- `username`
+- `confirmed`
+- `blocked`
+- `jwt`
+- `createdAt`
+- `updatedAt`
 
-Firebase Auth should not become the full app database.
+The Flutter app should treat auth as an API/repository concern, not as direct widget code.
 
 ### App User Profile
 
@@ -151,7 +159,7 @@ Stored later in Strapi or another backend.
 Fields:
 
 - `id`
-- `firebaseUid`
+- `userId`
 - `name`
 - `email`
 - `role`
@@ -162,7 +170,6 @@ Fields:
 Roles:
 
 - `student`
-- `creator`
 - `admin`
 
 ### Course
@@ -173,7 +180,6 @@ Fields:
 - `title`
 - `description`
 - `thumbnailUrl`
-- `creatorId`
 - `category`
 - `difficulty`
 - `durationMinutes`
@@ -241,8 +247,8 @@ After the MVP:
 6. Add progress tracking.
 7. Add local persistence with HydratedCubit or another local storage option.
 8. Add offline-ready saved content metadata.
-9. Add Firebase email verification.
-10. Add creator mode.
+9. Add account confirmation/password reset if needed.
+10. Add internal content workflow documentation for Strapi admin.
 
 ## Production Requirements
 
@@ -256,7 +262,8 @@ Required:
 - session restore
 - auth loading/error states
 - form validation
-- Firebase Auth error mapping
+- API/Firebase error mapping during the transition
+- final Strapi/JWT error mapping
 
 Recommended before production:
 
@@ -268,10 +275,9 @@ Recommended before production:
 
 ### Authorization
 
-Required when creator/admin features exist:
+Required when protected content or admin features exist:
 
 - user role
-- protected creator routes
 - protected admin routes
 - backend permission checks
 
@@ -315,7 +321,7 @@ Required before real video production:
 
 Useful:
 
-- auth session handled by Firebase
+- auth session/JWT stored through the app auth repository
 - saved UI preferences
 - cached course metadata
 - progress cache
@@ -360,7 +366,7 @@ Required before real public launch:
 - terms of service
 - content ownership rules
 - user deletion/export path
-- creator upload/content rules
+- internal content publishing rules
 
 ## App Flow
 
@@ -368,9 +374,9 @@ Required before real public launch:
 
 ```txt
 App starts
-Firebase initializes
-AuthenticationCubit listens to authStateChanges
-No user
+App initializes
+AuthenticationCubit checks saved JWT/session
+No valid session
 AuthenticationUnauthenticated
 Show LoginPage
 ```
@@ -382,9 +388,9 @@ User fills signup form
 Form validates locally
 SignupFormCard calls AuthenticationCubit.signUp
 Cubit emits AuthenticationLoading
-Repository calls FirebaseAuth.createUserWithEmailAndPassword
-Firebase creates user and signs user in
-authStateChanges emits User
+Repository calls POST /api/auth/local/register
+API returns user and JWT
+Repository stores JWT/session
 Cubit emits AuthenticationAuthenticated
 App redirects to HomePage
 ```
@@ -396,9 +402,9 @@ User fills login form
 Form validates locally
 LoginFormCard calls AuthenticationCubit.signIn
 Cubit emits AuthenticationLoading
-Repository calls FirebaseAuth.signInWithEmailAndPassword
-Firebase signs user in
-authStateChanges emits User
+Repository calls POST /api/auth/local
+API returns user and JWT
+Repository stores JWT/session
 Cubit emits AuthenticationAuthenticated
 App redirects to HomePage
 ```
@@ -408,8 +414,7 @@ App redirects to HomePage
 ```txt
 User taps sign out
 ProfilePage calls AuthenticationCubit.signOut
-Repository calls FirebaseAuth.signOut
-authStateChanges emits null
+Repository clears saved JWT/session
 Cubit emits AuthenticationUnauthenticated
 App redirects to LoginPage
 ```
@@ -429,10 +434,7 @@ Prototype all of these before full implementation:
 9. Progress
 10. Settings
 11. Password Reset
-12. Email Verification Pending
-13. Creator Dashboard
-14. Creator Course Form
-15. Creator Lesson Form
+12. Account Confirmation Pending, only if enabled in Strapi auth
 
 ## Implementation Plan
 
@@ -455,7 +457,8 @@ Learning focus:
 - `BlocProvider`
 - `BlocBuilder`
 - `BlocListener`
-- Firebase Auth
+- Strapi auth/JWT as the target mirror
+- Firebase Auth only as a temporary comparison if it remains in the app
 
 ### Phase 2: App Shell
 
@@ -524,8 +527,9 @@ Build:
 - local Strapi project
 - course collection
 - lesson collection
-- creator relation
-- API permissions
+- lesson-to-course relation
+- public read permissions for published content
+- authenticated permissions for user-owned data later
 
 Learning focus:
 
@@ -547,20 +551,22 @@ Learning focus:
 - persistence tradeoffs
 - offline-ready patterns
 
-### Phase 8: Creator Tools
+### Phase 8: Strapi Admin Workflow
 
-Build:
+Document and practice:
 
-- creator dashboard
-- create/edit course
-- create/edit lesson
+- creating courses in Strapi admin
+- creating lessons in Strapi admin
+- relating lessons to courses
+- publishing/unpublishing records
+- checking generated REST responses
 
 Learning focus:
 
-- roles
-- forms
-- protected UI
-- protected backend actions
+- CMS-managed content
+- generated backend APIs
+- Strapi permissions
+- why the Flutter app stays consumer-focused
 
 ### Phase 9: Media
 
@@ -589,11 +595,8 @@ Create prototypes in this order:
 7. Lesson Detail
 8. Saved Courses
 9. Settings
-10. Email Verification Pending
-11. Password Reset
-12. Creator Dashboard
-13. Creator Course Form
-14. Creator Lesson Form
+10. Password Reset
+11. Account Confirmation Pending, only if enabled
 
 Prototype rule:
 
@@ -602,3 +605,20 @@ Prototype copy should describe user value, not implementation details.
 Implementation notes belong in docs.
 ```
 
+Prototype files:
+
+```txt
+prototypes/prototype_gallery.html
+prototypes/login_modern_editorial.html
+prototypes/signup_modern_editorial.html
+prototypes/home_authenticated_modern_editorial.html
+prototypes/profile_modern_editorial.html
+prototypes/course_catalog_modern_editorial.html
+prototypes/course_detail_modern_editorial.html
+prototypes/lesson_detail_modern_editorial.html
+prototypes/saved_courses_modern_editorial.html
+prototypes/progress_modern_editorial.html
+prototypes/settings_modern_editorial.html
+prototypes/password_reset_modern_editorial.html
+prototypes/account_confirmation_pending_modern_editorial.html
+```

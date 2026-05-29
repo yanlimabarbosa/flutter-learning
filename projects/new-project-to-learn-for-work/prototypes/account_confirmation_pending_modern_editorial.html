@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Content Hub - Modern Editorial</title>
+    <title>Content Hub - Account Confirmation</title>
     <link rel="stylesheet" href="./login_palette_base.css" />
     <style>
       :root {
@@ -26,6 +26,21 @@
         --focus-ring: 0 0 0 3px rgba(139, 218, 255, 0.12);
         --button-text: #081218;
       }
+
+      .message-card {
+        margin-top: auto;
+        padding: 18px;
+        border-radius: 8px;
+        background: var(--surface);
+        border: 1px solid var(--line);
+      }
+
+      .message-card p {
+        margin: 0 0 16px;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.5;
+      }
     </style>
   </head>
   <body>
@@ -33,38 +48,24 @@
       <section class="screen">
         <header class="topbar">
           <div class="brand-mark">CH</div>
-          <div class="status-pill">Member access</div>
+          <div class="status-pill">Check email</div>
         </header>
 
         <section class="hero">
-          <p class="eyebrow">Curated Learning</p>
-          <h1>Learn, save, and continue anywhere.</h1>
+          <p class="eyebrow">Almost There</p>
+          <h1>Confirm your account.</h1>
           <p class="hero-copy">
-            Access curated courses, keep favorites close, and download lessons for offline study.
+            Open the confirmation link sent to your email to finish setting up your library.
           </p>
         </section>
 
-        <section class="featured" aria-label="Featured content">
-          <article class="feature-card">
-            <strong>Personal library</strong>
-            <span>Keep the courses that matter organized in one place.</span>
-          </article>
-          <article class="feature-card">
-            <strong>Study anywhere</strong>
-            <span>Continue lessons across devices and low-signal moments.</span>
-          </article>
-        </section>
-
-        <section class="login-panel" aria-label="Login form">
-          <input class="field" type="email" placeholder="Email" />
-          <input class="field" type="password" placeholder="Password" />
+        <section class="message-card" aria-label="Confirmation actions">
+          <p>
+            After confirming, return to the app and sign in to start saving courses and tracking lessons.
+          </p>
           <div class="actions">
-            <button class="primary-button">Sign in</button>
-            <button class="ghost-button">Create account</button>
-          </div>
-          <div class="meta-row">
-            <span>New here?</span>
-            <a href="#">Forgot password?</a>
+            <button class="primary-button">I confirmed my email</button>
+            <button class="ghost-button">Resend email</button>
           </div>
         </section>
       </section>

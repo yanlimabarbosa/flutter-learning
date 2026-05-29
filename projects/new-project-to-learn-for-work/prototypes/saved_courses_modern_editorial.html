@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Content Hub - Saved Courses</title>
+    <link rel="stylesheet" href="./login_palette_base.css" />
+    <style>
+      :root {
+        --page-bg: radial-gradient(circle at 50% 0%, rgba(139, 218, 255, 0.16), transparent 34%),
+          linear-gradient(145deg, #0b0c0f, #101114 58%, #171b22);
+        --bg: #101114;
+        --surface: #181a20;
+        --surface-strong: #20232b;
+        --primary: #8bdaff;
+        --accent: #f4c95d;
+        --text: #f5f7fa;
+        --muted: #a8afbd;
+        --line: rgba(245, 247, 250, 0.12);
+        --placeholder: #777f8f;
+        --brand-bg: linear-gradient(135deg, var(--primary), #f8fcff);
+        --brand-text: #081218;
+        --pill-bg: rgba(139, 218, 255, 0.1);
+        --feature-bg: linear-gradient(160deg, rgba(139, 218, 255, 0.18), transparent 58%),
+          var(--surface-strong);
+        --focus-ring: 0 0 0 3px rgba(139, 218, 255, 0.12);
+        --button-text: #081218;
+      }
+
+      .saved-list {
+        display: grid;
+        gap: 12px;
+      }
+
+      .saved-card {
+        padding: 16px;
+        border-radius: 8px;
+        background: var(--surface);
+        border: 1px solid var(--line);
+      }
+
+      .saved-card strong {
+        display: block;
+        margin-bottom: 8px;
+      }
+
+      .saved-card p {
+        margin: 0 0 14px;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.45;
+      }
+
+      .progress-track {
+        height: 7px;
+        overflow: hidden;
+        border-radius: 999px;
+        background: rgba(245, 247, 250, 0.08);
+      }
+
+      .progress-fill {
+        height: 100%;
+        background: var(--primary);
+      }
+    </style>
+  </head>
+  <body>
+    <main class="phone">
+      <section class="screen">
+        <header class="topbar">
+          <div class="brand-mark">CH</div>
+          <div class="status-pill">Saved</div>
+        </header>
+
+        <section>
+          <p class="eyebrow">Your Library</p>
+          <h1>Saved for later.</h1>
+          <p class="hero-copy">Keep important courses close and return when you are ready.</p>
+        </section>
+
+        <section class="saved-list" aria-label="Saved courses">
+          <article class="saved-card">
+            <strong>Structured Flutter State</strong>
+            <p>Next lesson: Connecting screens to data.</p>
+            <div class="progress-track"><div class="progress-fill" style="width: 68%"></div></div>
+          </article>
+          <article class="saved-card">
+            <strong>Connected Mobile Apps</strong>
+            <p>Start with reliable data, states, and useful empty screens.</p>
+            <div class="progress-track"><div class="progress-fill" style="width: 12%"></div></div>
+          </article>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>

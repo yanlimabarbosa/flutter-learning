@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Content Hub - Progress</title>
+    <link rel="stylesheet" href="./login_palette_base.css" />
+    <style>
+      :root {
+        --page-bg: radial-gradient(circle at 50% 0%, rgba(139, 218, 255, 0.16), transparent 34%),
+          linear-gradient(145deg, #0b0c0f, #101114 58%, #171b22);
+        --bg: #101114;
+        --surface: #181a20;
+        --surface-strong: #20232b;
+        --primary: #8bdaff;
+        --accent: #f4c95d;
+        --text: #f5f7fa;
+        --muted: #a8afbd;
+        --line: rgba(245, 247, 250, 0.12);
+        --placeholder: #777f8f;
+        --brand-bg: linear-gradient(135deg, var(--primary), #f8fcff);
+        --brand-text: #081218;
+        --pill-bg: rgba(139, 218, 255, 0.1);
+        --feature-bg: linear-gradient(160deg, rgba(139, 218, 255, 0.18), transparent 58%),
+          var(--surface-strong);
+        --focus-ring: 0 0 0 3px rgba(139, 218, 255, 0.12);
+        --button-text: #081218;
+      }
+
+      .progress-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+
+      .timeline {
+        display: grid;
+        gap: 12px;
+      }
+
+      .timeline-item {
+        padding: 16px;
+        border-radius: 8px;
+        background: var(--surface);
+        border: 1px solid var(--line);
+      }
+
+      .timeline-item strong {
+        display: block;
+        margin-bottom: 8px;
+      }
+
+      .timeline-item span {
+        color: var(--muted);
+        font-size: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="phone">
+      <section class="screen">
+        <header class="topbar">
+          <div class="brand-mark">CH</div>
+          <div class="status-pill">Progress</div>
+        </header>
+
+        <section>
+          <p class="eyebrow">Momentum</p>
+          <h1>Your learning streak.</h1>
+          <p class="hero-copy">Track completed lessons and keep a clear view of your current path.</p>
+        </section>
+
+        <section class="progress-grid" aria-label="Progress stats">
+          <article class="feature-card">
+            <strong>12</strong>
+            <span>Lessons completed</span>
+          </article>
+          <article class="feature-card">
+            <strong>04</strong>
+            <span>Days active</span>
+          </article>
+        </section>
+
+        <section class="timeline" aria-label="Recent progress">
+          <article class="timeline-item">
+            <strong>Connecting screens to data</strong>
+            <span>Completed today</span>
+          </article>
+          <article class="timeline-item">
+            <strong>State classes and UI states</strong>
+            <span>Completed yesterday</span>
+          </article>
+          <article class="timeline-item">
+            <strong>Structured Flutter State</strong>
+            <span>68% complete</span>
+          </article>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>

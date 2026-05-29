@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Content Hub - Course Detail</title>
+    <link rel="stylesheet" href="./login_palette_base.css" />
+    <style>
+      :root {
+        --page-bg: radial-gradient(circle at 50% 0%, rgba(139, 218, 255, 0.16), transparent 34%),
+          linear-gradient(145deg, #0b0c0f, #101114 58%, #171b22);
+        --bg: #101114;
+        --surface: #181a20;
+        --surface-strong: #20232b;
+        --primary: #8bdaff;
+        --accent: #f4c95d;
+        --text: #f5f7fa;
+        --muted: #a8afbd;
+        --line: rgba(245, 247, 250, 0.12);
+        --placeholder: #777f8f;
+        --brand-bg: linear-gradient(135deg, var(--primary), #f8fcff);
+        --brand-text: #081218;
+        --pill-bg: rgba(139, 218, 255, 0.1);
+        --feature-bg: linear-gradient(160deg, rgba(139, 218, 255, 0.18), transparent 58%),
+          var(--surface-strong);
+        --focus-ring: 0 0 0 3px rgba(139, 218, 255, 0.12);
+        --button-text: #081218;
+      }
+
+      .screen {
+        gap: 22px;
+      }
+
+      .back {
+        color: var(--primary);
+        font-weight: 900;
+      }
+
+      .hero-image {
+        height: 188px;
+        border-radius: 8px;
+        border: 1px solid var(--line);
+        background:
+          radial-gradient(circle at 28% 22%, rgba(244, 201, 93, 0.2), transparent 28%),
+          linear-gradient(135deg, rgba(139, 218, 255, 0.24), transparent 60%),
+          linear-gradient(160deg, #27313d, #141820);
+      }
+
+      .course-heading h1 {
+        font-size: 38px;
+      }
+
+      .meta-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+      }
+
+      .meta-card,
+      .lesson-row {
+        border-radius: 8px;
+        background: var(--surface);
+        border: 1px solid var(--line);
+      }
+
+      .meta-card {
+        padding: 14px;
+      }
+
+      .meta-card strong {
+        display: block;
+        color: var(--primary);
+        margin-bottom: 6px;
+      }
+
+      .meta-card span,
+      .lesson-row span {
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .lesson-list {
+        display: grid;
+        gap: 10px;
+      }
+
+      .lesson-row {
+        padding: 14px;
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+      }
+
+      .lesson-row strong {
+        display: block;
+        margin-bottom: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="phone">
+      <section class="screen">
+        <header class="topbar">
+          <div class="back">Back</div>
+          <div class="status-pill">Saved</div>
+        </header>
+
+        <div class="hero-image"></div>
+
+        <section class="course-heading">
+          <p class="eyebrow">Course</p>
+          <h1>Structured Flutter State</h1>
+          <p class="hero-copy">
+            Learn how to move from local widget state to predictable screens with clear loading and failure paths.
+          </p>
+        </section>
+
+        <section class="meta-grid" aria-label="Course summary">
+          <article class="meta-card">
+            <strong>08</strong>
+            <span>Lessons</span>
+          </article>
+          <article class="meta-card">
+            <strong>2h</strong>
+            <span>Duration</span>
+          </article>
+          <article class="meta-card">
+            <strong>68%</strong>
+            <span>Progress</span>
+          </article>
+        </section>
+
+        <button class="primary-button">Continue course</button>
+
+        <section class="lesson-list" aria-label="Lessons">
+          <article class="lesson-row">
+            <div>
+              <strong>State classes and UI states</strong>
+              <span>18 min</span>
+            </div>
+            <span>Done</span>
+          </article>
+          <article class="lesson-row">
+            <div>
+              <strong>Connecting screens to data</strong>
+              <span>22 min</span>
+            </div>
+            <span>Next</span>
+          </article>
+          <article class="lesson-row">
+            <div>
+              <strong>Rendering failure states</strong>
+              <span>15 min</span>
+            </div>
+            <span>Locked</span>
+          </article>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>
