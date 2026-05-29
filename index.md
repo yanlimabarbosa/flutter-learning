@@ -100,12 +100,15 @@ Important docs:
 
 ```txt
 /home/yan/codes/flutter-learning/projects/new-project-to-learn-for-work/ROADMAP.md
+/home/yan/codes/flutter-learning/projects/new-project-to-learn-for-work/PRODUCT_PLAN.md
 /home/yan/codes/flutter-learning/projects/new-project-to-learn-for-work/work_project_architecture_notes.md
 /home/yan/codes/flutter-learning/projects/new-project-to-learn-for-work/session_progress.md
 /home/yan/codes/flutter-learning/projects/new-project-to-learn-for-work/review_checklist.md
 ```
 
 `ROADMAP.md` describes the app Yan should build to learn the job-relevant stack.
+
+`PRODUCT_PLAN.md` defines what Content Hub is as a product, including users, core flows, production requirements, data model, and screen/prototype plan.
 
 `work_project_architecture_notes.md` explains the architecture of the real work project and how to mirror it.
 
@@ -216,6 +219,7 @@ The intended app is described in:
 
 ```txt
 projects/new-project-to-learn-for-work/ROADMAP.md
+projects/new-project-to-learn-for-work/PRODUCT_PLAN.md
 ```
 
 Study order:

@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Content Hub - Authenticated Home</title>
+    <link rel="stylesheet" href="./login_palette_base.css" />
+    <style>
+      :root {
+        --page-bg: radial-gradient(circle at 50% 0%, rgba(139, 218, 255, 0.16), transparent 34%),
+          linear-gradient(145deg, #0b0c0f, #101114 58%, #171b22);
+        --bg: #101114;
+        --surface: #181a20;
+        --surface-strong: #20232b;
+        --primary: #8bdaff;
+        --accent: #f4c95d;
+        --text: #f5f7fa;
+        --muted: #a8afbd;
+        --line: rgba(245, 247, 250, 0.12);
+        --placeholder: #777f8f;
+        --brand-bg: linear-gradient(135deg, var(--primary), #f8fcff);
+        --brand-text: #081218;
+        --pill-bg: rgba(139, 218, 255, 0.1);
+        --feature-bg: linear-gradient(160deg, rgba(139, 218, 255, 0.18), transparent 58%),
+          var(--surface-strong);
+        --focus-ring: 0 0 0 3px rgba(139, 218, 255, 0.12);
+        --button-text: #081218;
+      }
+
+      .screen {
+        gap: 24px;
+      }
+
+      .topbar {
+        margin-bottom: 6px;
+      }
+
+      .avatar {
+        width: 42px;
+        height: 42px;
+        border-radius: 999px;
+        display: grid;
+        place-items: center;
+        background: var(--surface-strong);
+        color: var(--primary);
+        border: 1px solid var(--line);
+        font-weight: 900;
+      }
+
+      .welcome {
+        padding-top: 8px;
+      }
+
+      .welcome h1 {
+        font-size: 38px;
+      }
+
+      .section-title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 12px;
+      }
+
+      .section-title h2 {
+        margin: 0;
+        font-size: 18px;
+        line-height: 1.2;
+      }
+
+      .section-title a {
+        color: var(--primary);
+        text-decoration: none;
+        font-size: 12px;
+        font-weight: 800;
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+
+      .stat-card,
+      .course-card,
+      .profile-panel {
+        border-radius: 8px;
+        background: var(--surface);
+        border: 1px solid var(--line);
+      }
+
+      .stat-card {
+        padding: 16px;
+      }
+
+      .stat-card strong {
+        display: block;
+        margin-bottom: 8px;
+        color: var(--primary);
+        font-size: 28px;
+        line-height: 1;
+      }
+
+      .stat-card span,
+      .course-card p,
+      .profile-panel p {
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.45;
+      }
+
+      .course-list {
+        display: grid;
+        gap: 12px;
+      }
+
+      .course-card {
+        padding: 16px;
+      }
+
+      .course-card strong {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 16px;
+      }
+
+      .progress-track {
+        height: 7px;
+        margin-top: 14px;
+        overflow: hidden;
+        border-radius: 999px;
+        background: rgba(245, 247, 250, 0.08);
+      }
+
+      .progress-fill {
+        height: 100%;
+        border-radius: inherit;
+        background: var(--primary);
+      }
+
+      .profile-panel {
+        margin-top: auto;
+        padding: 16px;
+      }
+
+      .profile-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 14px;
+      }
+
+      .profile-header strong {
+        display: block;
+        margin-bottom: 4px;
+      }
+
+      .profile-header span {
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .secondary-button {
+        width: 100%;
+        height: 44px;
+        border-radius: 8px;
+        border: 1px solid var(--line);
+        background: transparent;
+        color: var(--primary);
+        font: inherit;
+        font-weight: 800;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="phone">
+      <section class="screen">
+        <header class="topbar">
+          <div class="brand-mark">CH</div>
+          <div class="avatar">Y</div>
+        </header>
+
+        <section class="welcome">
+          <p class="eyebrow">Welcome back</p>
+          <h1>Continue your learning path.</h1>
+          <p class="hero-copy">
+            Pick up your saved courses, continue lessons in progress, and keep your learning path
+            organized across devices.
+          </p>
+        </section>
+
+        <section aria-label="Learning stats">
+          <div class="section-title">
+            <h2>Progress</h2>
+            <a href="#">This week</a>
+          </div>
+          <div class="stats">
+            <article class="stat-card">
+              <strong>03</strong>
+              <span>Saved courses</span>
+            </article>
+            <article class="stat-card">
+              <strong>68%</strong>
+              <span>Current path</span>
+            </article>
+          </div>
+        </section>
+
+        <section aria-label="Continue watching">
+          <div class="section-title">
+            <h2>Continue</h2>
+            <a href="#">View all</a>
+          </div>
+          <div class="course-list">
+            <article class="course-card">
+              <strong>Flutter Cubit Foundations</strong>
+              <p>State, repositories, loading, success, and failure states.</p>
+              <div class="progress-track">
+                <div class="progress-fill" style="width: 68%"></div>
+              </div>
+            </article>
+            <article class="course-card">
+              <strong>Firebase Auth Flow</strong>
+              <p>Signup, login, logout, session restore, and profile bootstrap.</p>
+              <div class="progress-track">
+                <div class="progress-fill" style="width: 34%"></div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="profile-panel" aria-label="Profile preview">
+          <div class="profile-header">
+            <div class="avatar">Y</div>
+            <div>
+              <strong>Yan Learner</strong>
+              <span>yan@example.com</span>
+            </div>
+          </div>
+          <p>
+            Manage your account, saved content, and learning preferences from one place.
+          </p>
+          <button class="secondary-button">Open profile</button>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>
