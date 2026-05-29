@@ -1,7 +1,7 @@
-import 'package:content_hub/shared/widgets/base_card_widget.dart';
-import 'package:content_hub/shared/widgets/eyebrow_text_widget.dart';
-import 'package:content_hub/shared/widgets/hero_description_widget.dart';
-import 'package:content_hub/shared/widgets/hero_title_widget.dart';
+import 'package:content_hub/ui/base_card_widget.dart';
+import 'package:content_hub/ui/eyebrow_text_widget.dart';
+import 'package:content_hub/ui/hero_description_widget.dart';
+import 'package:content_hub/ui/hero_title_widget.dart';
 import 'package:content_hub/views/pages/login/widgets/login_form_card_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -18,20 +18,6 @@ class LoginPage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Row(
-                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //   children: [
-                //     BrandMark(
-                //       text: "CH",
-                //       firstColorGradient: colors.primary,
-                //       secondColorGradient: colors.primaryContainer,
-                //     ),
-                //     StatusPill(
-                //       text: "Member access",
-                //       textColor: colors.primary,
-                //     ),
-                //   ],
-                // ),
                 SizedBox(height: 40),
                 EyebrowText(text: "MODERN EDITORIAL"),
                 SizedBox(height: 10),
